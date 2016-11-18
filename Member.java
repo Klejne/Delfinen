@@ -1,4 +1,5 @@
-import java.util.GregorianCalendar;
+import java.util.*;
+import java.io.*;
 
 public class Member
 {
@@ -19,13 +20,37 @@ public class Member
    public static Member[] debtors()
    {
       for (Member member : all)  //for each
-      {
-         System.out.println(member.name);
+      {        
+         if(member.balance < 0)
+         {
+            System.out.println(member.name + " " + member.balance);
+         }
       }
       
       return null;
    }
    
+   public static void debtorsToFile()
+   {  
+      File debt = new File("debt.txt");
+      Scanner input;
+      
+      try
+      {
+         input = new Scanner(debt);
+      }
+      
+      catch(FileNotFoundException ex)
+      {
+         System.out.print(ex);
+         return;  
+      }
+      
+      //output.println("HHH");
+      
+      //Hent info om medlemmer i gæld
+      //Skriv ud til fil
+   } 
    
    public static void populate()
    {
@@ -39,7 +64,7 @@ public class Member
       
       for (int i = 0; i < 3; i++)
       {
-         System.out.println(all[i].balance);  //Arrays.toString(all)
+         //System.out.println(all[i].balance);  //Arrays.toString(all)
       }
    }
    
