@@ -8,7 +8,7 @@ public class Member
    public String name;
    public GregorianCalendar/*(int year, int month, int dayOfMonth)*/ birthday;
    
-   public static Member[] all = new Member[3];
+   public static Member[] all = new Member[5];
    
    public String toString()
    {
@@ -26,13 +26,13 @@ public class Member
    
    public static Member[] debtors()
    {
-      Member[] debtor = new Member[1];
+      Member[] debtor = new Member[2];
       
       for (Member member : all)  //for each
       {        
          if(member.balance < 0)
          {  
-            for(int i = 0; i < debtor.length; i++)
+            for (int i = 0; i < debtor.length; i++)
             {
                debtor[i] = member;
             }
@@ -70,12 +70,16 @@ public class Member
       Member ole = new Member(1, "Ole Bole", 300);
       Member hans = new Member(2, "Hans P", 400);
       Member karen = new Member(3, "Karen G", -100);
+      Member kåre = new Member(4, "Kåre Pol", -300);
+      Member louise = new Member(5, "Louise Ålle", 400);
       
       all[0] = ole;
       all[1] = hans;
       all[2] = karen;
+      all[3] = kåre;
+      all[4] = louise;
       
-      for (int i = 0; i < 3; i++)
+      for (int i = 0; i < 4; i++)
       {
          //System.out.println(all[i].balance);  //Arrays.toString(all)
       }

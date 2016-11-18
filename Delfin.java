@@ -4,12 +4,11 @@ public class Delfin
    {
       Member.populate();
       Member.debtors();
-<<<<<<< HEAD
       Member.debtorsToFile();
-=======
+
       User.login();
       User.populate();
     
->>>>>>> origin/master
+
    }
 }

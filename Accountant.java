@@ -1,13 +1,13 @@
-public class Accountant extends User
+public class Accountant //extends User
 {
    public static void printDebtors()
    {
-      Member.debtors();
+      //Member.debtors();
    }
    
    public static void writeDebtors()
    {
-      Member.debtorsToFile();   
+      //Member.debtorsToFile();   
    }
    
    public static void readDebtors()
