@@ -15,12 +15,14 @@ public class User
       
    }
    
-   public static void login()
+   public static boolean login()
    {
       Scanner loginScanner = new Scanner(System.in);
       
       String userLogin;
       String userPassword;
+      boolean success;
+      success = false;
       
       System.out.print("Indtast login:");
       
@@ -30,6 +32,23 @@ public class User
       
       userPassword = loginScanner.nextLine();
       
+      for (User user : all)  //for each
+      {        
+         if (user.login.equals(userLogin) && user.password.equals(userPassword))
+         {
+            System.out.println("Velkommen!");
+            success = true;
+          
+         }
+      }
+      
+      if (success == false)
+      {
+         System.out.println("Forkert login eller password");
+         
+      }
+
+      return success;
    }
       
    public static void populate()
