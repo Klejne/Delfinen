@@ -10,6 +10,13 @@ public class Member
    
    public static Member[] all = new Member[3];
    
+   public String toString()
+   {
+      String string = String.format("%-15s | %6d", name, balance);
+      
+      return string;
+   }
+   
    public Member(int id, String name, int balance)  //constructor
    {
       this.id = id;
@@ -19,25 +26,31 @@ public class Member
    
    public static Member[] debtors()
    {
+      Member[] debtor = new Member[1];
+      
       for (Member member : all)  //for each
       {        
          if(member.balance < 0)
-         {
-            System.out.println(member.name + " " + member.balance);
+         {  
+            for(int i = 0; i < debtor.length; i++)
+            {
+               debtor[i] = member;
+            }
+            //System.out.println(member.name + " " + member.balance);
          }
       }
       
-      return null;
+      return debtor;
    }
    
    public static void debtorsToFile()
    {  
-      File debt = new File("debt.txt");
-      Scanner input;
+      PrintStream output;
+      Member[] debtorsPrint = debtors();  
       
       try
       {
-         input = new Scanner(debt);
+         output = new PrintStream(new File("debt.txt"));
       }
       
       catch(FileNotFoundException ex)
@@ -46,10 +59,10 @@ public class Member
          return;  
       }
       
-      //output.println("HHH");
-      
-      //Hent info om medlemmer i gæld
-      //Skriv ud til fil
+      for(int i = 0; i < debtorsPrint.length; i++)
+      {
+         output.println(Arrays.toString(debtorsPrint));
+      }
    } 
    
    public static void populate()

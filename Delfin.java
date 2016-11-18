@@ -4,5 +4,6 @@ public class Delfin
    {
       Member.populate();
       Member.debtors();
+      Member.debtorsToFile();
    }
 }
