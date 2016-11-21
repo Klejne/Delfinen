@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
 
 
 public class Member
@@ -71,6 +72,25 @@ public class Member
    
    public static void populate()
    {
+   
+      File memberFile = new File("members.csv");
+      
+      Scanner input;
+      
+      try
+      {
+         input = new Scanner(memberFile);
+      }
+      catch (FileNotFoundException ex)
+      {
+         System.out.println(ex);
+         return;
+      }
+      while (input.hasNextLine())
+      {   
+         System.out.println(input.nextLine());
+      }
+      
       /*File f = new File("members.txt");
       int nr;
       Member member = new Member();
