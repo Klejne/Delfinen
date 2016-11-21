@@ -8,7 +8,8 @@ public class Member
    public int id;
    public int balance;
    public String name;
-   public GregorianCalendar/*(int year, int month, int dayOfMonth)*/ birthday;
+   //public GregorianCalendar (int year, int month, int dayOfMonth) birthday;
+   public int birthday;
    
    public static ArrayList<Member> all = new ArrayList();
    
@@ -19,10 +20,11 @@ public class Member
       return string;
    }
    
-   public Member(int id, String name, int balance)  //constructor
+   public Member(int id, String name, int birthday, int balance)  //constructor
    {
       this.id = id;
       this.name = name;
+      this.birthday = birthday;
       this.balance = balance;
    }
    
@@ -89,11 +91,11 @@ public class Member
       }*/
       
    
-      Member ole = new Member(1, "Ole Bole", 300);
-      Member hans = new Member(2, "Hans P", 400);
-      Member karen = new Member(3, "Karen G", -100);
-      Member kåre = new Member(4, "Kåre Pol", -300);
-      Member louise = new Member(5, "Louise Ålle", 400);
+      Member ole = new Member(1, "Ole Bole", 1987, 300);
+      Member hans = new Member(2, "Hans P", 1887, 400);
+      Member karen = new Member(3, "Karen G", 2000, -100);
+      Member kåre = new Member(4, "Kåre Pol", 1987, -300);
+      Member louise = new Member(5, "Louise Ålle", 1999, 400);
       
       all.add(ole);
       all.add(hans);
