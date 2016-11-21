@@ -10,7 +10,7 @@ public class Member
    
    public static Member[] all = new Member[5];
    
-   public String toString()
+   public String toString()   //kaldes automatisk de steder hvor objektet automatisk konverteres til en streng
    {
       String string = String.format("%-15s | %6d", name, balance);
       
@@ -27,16 +27,16 @@ public class Member
    public static Member[] debtors()
    {
       Member[] debtor = new Member[2];
+      int i = 0;
       
       for (Member member : all)  //for each
       {        
-         if(member.balance < 0)
+         if (member.balance < 0)
          {  
-            for (int i = 0; i < debtor.length; i++)
-            {
-               debtor[i] = member;
-            }
-            //System.out.println(member.name + " " + member.balance);
+            debtor[i] = member;
+            i++;
+            
+            System.out.println(member.name + " " + member.balance);
          }
       }
       
@@ -59,9 +59,9 @@ public class Member
          return;  
       }
       
-      for(int i = 0; i < debtorsPrint.length; i++)
+      for (int i = 0; i < debtorsPrint.length; i++)
       {
-         output.println(Arrays.toString(debtorsPrint));
+         output.println(debtorsPrint[i]);
       }
    } 
    
