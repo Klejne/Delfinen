@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class Member
@@ -9,7 +10,7 @@ public class Member
    public String name;
    public GregorianCalendar/*(int year, int month, int dayOfMonth)*/ birthday;
    
-   public static Member[] all = new Member[5];
+   public static ArrayList<Member> all = new ArrayList();
    
    public String toString()   //kaldes automatisk de steder hvor objektet automatisk konverteres til en streng
    {
@@ -68,22 +69,39 @@ public class Member
    
    public static void populate()
    {
+      /*File f = new File("members.txt");
+      int nr;
+      Member member = new Member();
+      
+      Pizza[] pizzabuffer = new Pizza[100];
+      nr = 0;
+      
+      
+      Scanner input;
+      try
+      {
+         input = new Scanner(f, StandardCharsets.UTF_8.name());
+      }
+      catch(FileNotFoundException ex)
+      {
+         System.out.println(ex);
+         return;
+      }*/
+      
+   
       Member ole = new Member(1, "Ole Bole", 300);
       Member hans = new Member(2, "Hans P", 400);
       Member karen = new Member(3, "Karen G", -100);
       Member kåre = new Member(4, "Kåre Pol", -300);
       Member louise = new Member(5, "Louise Ålle", 400);
       
-      all[0] = ole;
-      all[1] = hans;
-      all[2] = karen;
-      all[3] = kåre;
-      all[4] = louise;
+      all.add(ole);
+      all.add(hans);
+      all.add(karen);
+      all.add(kåre);
+      all.add(louise);
       
-      for (int i = 0; i < 4; i++)
-      {
-         //System.out.println(all[i].balance);  //Arrays.toString(all)
-      }
+      System.out.println(all);
    }
    
 }
