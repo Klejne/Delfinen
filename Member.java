@@ -29,19 +29,19 @@ public class Member
       this.balance = balance;
    }
    
-   public static Member[] debtors()
+   
+   
+   public static ArrayList<Member> debtor()
    {
-      //ArrayList<Member> debtor = new ArrayList();   ///IKKE FÆRDIGT
+      ArrayList<Member> debtor = new ArrayList<Member>();   ///IKKE FÆRDIGT
       
-      Member[] debtor = new Member[2];
       int i = 0;
       
-      for (Member member : all)  //for each
+      for (Member member: all)  //for each
       {        
          if (member.balance < 0)
          {  
-            debtor[i] = member;
-            i++;
+            debtor.add(member);
             
             System.out.println(member.name + " " + member.balance);
          }
@@ -50,16 +50,19 @@ public class Member
       return debtor;
    }
    
+   
+   
+   
    public static void debtorsToFile()
    {  
       PrintStream output;
-      Member[] debtorsPrint = debtors();  
+      ArrayList<Member> debtorsPrint = debtor();
       
-      //Vi mangler noget!!!
+      output = FileManager.write("debt.txt");  
       
-      for (int i = 0; i < debtorsPrint.length; i++)
+      for (int i = 0; i < debtorsPrint.size(); i++)
       {
-         output.println(debtorsPrint[i]);
+         output.println(debtorsPrint.get(i));
       }
    } 
    
