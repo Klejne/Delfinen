@@ -1,8 +1,8 @@
-import java.util.*;
-import java.io.*;
 import java.util.ArrayList;
-import java.nio.charset.StandardCharsets;
-
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 
 public class Member
 {
