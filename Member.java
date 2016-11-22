@@ -31,6 +31,8 @@ public class Member
    
    public static Member[] debtors()
    {
+      //ArrayList<Member> debtor = new ArrayList();   ///IKKE FÆRDIGT
+      
       Member[] debtor = new Member[2];
       int i = 0;
       
@@ -53,16 +55,7 @@ public class Member
       PrintStream output;
       Member[] debtorsPrint = debtors();  
       
-      try
-      {
-         output = new PrintStream(new File("debt.txt"));
-      }
-      
-      catch(FileNotFoundException ex)
-      {
-         System.out.print(ex);
-         return;  
-      }
+      //Vi mangler noget!!!
       
       for (int i = 0; i < debtorsPrint.length; i++)
       {
