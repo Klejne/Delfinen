@@ -50,9 +50,6 @@ public class Member
       return debtor;
    }
    
-   
-   
-   
    public static void debtorsToFile()
    {  
       PrintStream output;
@@ -66,28 +63,21 @@ public class Member
       }
    } 
    
-   public static void populate()
+   public static ArrayList<Member> populate()
    {
-   
       File memberFile = new File("members.csv");
-      
       Scanner input;
+
+      input = new Scanner(new File("memberFile"));
       
-      try
-      {
-         input = new Scanner(memberFile);
-      }
-      catch (FileNotFoundException ex)
-      {
-         System.out.println(ex);
-         return;
-      }
+      ArrayList<Member> member = new ArrayList<Member>();
+      
       while (input.hasNextLine())
       {   
-         System.out.println(input.nextLine());
+         System.out.println(input.nextLine());  
       }
    
-      Member ole = new Member(1, "Ole Bole", 1987, 300);
+      /*Member ole = new Member(1, "Ole Bole", 1987, 300);
       Member hans = new Member(2, "Hans P", 1887, 400);
       Member karen = new Member(3, "Karen G", 2000, -100);
       Member kåre = new Member(4, "Kåre Pol", 1987, -300);
@@ -100,6 +90,9 @@ public class Member
       all.add(louise);
       
       System.out.println(all);
+      */
+      
+      return null;
    }
    
 }
