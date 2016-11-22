@@ -1,6 +1,7 @@
 import java.io.PrintStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class FileManager
 {
@@ -19,6 +20,28 @@ public class FileManager
          return null;  
       }
       
+      
+      
       return output;
    }
+   
+   public static Scanner read(String filename)
+   {
+   
+      File file = new File(filename);
+      
+      Scanner input;
+      
+      try
+      {
+         input = new Scanner(file);
+      }
+      catch (FileNotFoundException ex)
+      {
+         System.out.println(ex);
+         return null;
+      }
+      return input;
+   }
+   
 }
