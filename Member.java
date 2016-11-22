@@ -73,20 +73,14 @@ public class Member
       
       Scanner input;
       
-      try
-      {
-         input = new Scanner(memberFile);
-      }
-      catch (FileNotFoundException ex)
-      {
-         System.out.println(ex);
-         return;
-      }
+      input = FileManager.read("members.csv");
+      
       while (input.hasNextLine())
       {   
          System.out.println(input.nextLine());
       }
-   
+      
+      /*
       Member ole = new Member(1, "Ole Bole", 1987, 300);
       Member hans = new Member(2, "Hans P", 1887, 400);
       Member karen = new Member(3, "Karen G", 2000, -100);
@@ -100,6 +94,7 @@ public class Member
       all.add(louise);
       
       System.out.println(all);
+      */
    }
    
 }
