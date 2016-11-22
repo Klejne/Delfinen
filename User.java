@@ -54,6 +54,9 @@ public class User
       
    public static void populate()
    {
+   
+      
+   
       User ole = new User("Ole Bole", "Bole Ole");
       User hans = new User("Hans P", "hej123");
       User karen = new User("Karen G", "password");
