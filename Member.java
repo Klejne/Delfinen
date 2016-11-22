@@ -72,27 +72,15 @@ public class Member
       
       ArrayList<Member> member = new ArrayList<Member>();
       
+      input = FileManager.read("members.csv");
+
       while (input.hasNextLine())
       {   
          System.out.println(input.nextLine());  
       }
-   
-      /*Member ole = new Member(1, "Ole Bole", 1987, 300);
-      Member hans = new Member(2, "Hans P", 1887, 400);
-      Member karen = new Member(3, "Karen G", 2000, -100);
-      Member kåre = new Member(4, "Kåre Pol", 1987, -300);
-      Member louise = new Member(5, "Louise Ålle", 1999, 400);
-      
-      all.add(ole);
-      all.add(hans);
-      all.add(karen);
-      all.add(kåre);
-      all.add(louise);
-      
-      System.out.println(all);
-      */
       
       return null;
+
    }
    
 }
