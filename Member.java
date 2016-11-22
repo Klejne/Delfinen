@@ -90,26 +90,6 @@ public class Member
       {   
          System.out.println(input.nextLine());
       }
-      
-      /*File f = new File("members.txt");
-      int nr;
-      Member member = new Member();
-      
-      Pizza[] pizzabuffer = new Pizza[100];
-      nr = 0;
-      
-      
-      Scanner input;
-      try
-      {
-         input = new Scanner(f, StandardCharsets.UTF_8.name());
-      }
-      catch(FileNotFoundException ex)
-      {
-         System.out.println(ex);
-         return;
-      }*/
-      
    
       Member ole = new Member(1, "Ole Bole", 1987, 300);
       Member hans = new Member(2, "Hans P", 1887, 400);
