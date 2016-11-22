@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 
 public class FileManager
 {
-   public static void write(String filename, String text)
+   public static PrintStream write(String filename)
    {
       PrintStream output;
       
@@ -16,9 +16,9 @@ public class FileManager
       catch(FileNotFoundException ex)
       {
          System.out.print(ex);
-         return;  
+         return null;  
       }
       
-      output.print(text);
+      return output;
    }
 }

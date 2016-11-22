@@ -53,9 +53,9 @@ public class Member
    public static void debtorsToFile()
    {  
       PrintStream output;
-      Member[] debtorsPrint = debtors();  
+      Member[] debtorsPrint = debtors();
       
-      //Vi mangler noget!!!
+      output = FileManager.write("debt.txt");  
       
       for (int i = 0; i < debtorsPrint.length; i++)
       {
