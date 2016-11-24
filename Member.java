@@ -16,7 +16,7 @@ public class Member
    
    public String toString()   //kaldes automatisk de steder hvor objektet automatisk konverteres til en streng
    {
-      String string = String.format("%-15s | %6d", name, balance);
+      String string = String.format("%-4d %-15s %d %5d \n", id, name, birthday, balance);
       
       return string;
    }
@@ -65,18 +65,33 @@ public class Member
    
    public static ArrayList<Member> populate()
    {
-      File memberFile = new File("members.csv");
       Scanner input;
-
-      input = new Scanner(new File("memberFile"));
+      Member member;    //opret medlem af typen Medlem
       
-      ArrayList<Member> member = new ArrayList<Member>();
+      ArrayList<Member> members = new ArrayList<Member>();
       
       input = FileManager.read("members.csv");
+      
+      
+      //useDelimiter splitter på de/t tegn (her: komma) der står i anførselstegn,
+      input.useDelimiter(",|" + System.lineSeparator());    //System.lineSeparator læser selv om det er \n, \r eller \n\r
 
       while (input.hasNextLine())
-      {   
-         System.out.println(input.nextLine());  
+      {  
+         String id = input.next();
+         String name = input.next();
+         String birthday = input.next();
+         String balance = input.next();
+          
+
+         int resultID = Integer.parseInt(id);
+         int resultBirthday = Integer.parseInt(birthday);
+         int resultBalance = Integer.parseInt(balance);
+         
+
+         member = new Member(resultID, name, resultBirthday, resultBalance);
+       
+         System.out.print(member);
       }
       
       return null;
