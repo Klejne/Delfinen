@@ -59,14 +59,14 @@ public class Member
       
       for (int i = 0; i < debtorsPrint.size(); i++)
       {
-         output.println(debtorsPrint.get(i));
+         output.print(debtorsPrint.get(i));
       }
    } 
    
    public static ArrayList<Member> populate()
    {
       Scanner input;
-      Member member;    //opret medlem af typen Medlem
+      Member member;
       
       ArrayList<Member> members = new ArrayList<Member>();
       

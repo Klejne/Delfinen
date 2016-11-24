@@ -39,6 +39,8 @@ public class User
          {
             System.out.println("Velkommen!");
             success = true;
+            
+            
           
          }
       }
@@ -65,13 +67,43 @@ public class User
       all.add(hans);
       all.add(karen);
       
-      
-      
    }
       
+   public static void printMenu()
+   {
+      int choice;
+      Scanner input = new Scanner(System.in);
+    
+      System.out.println("Kasserer for Delfinen");
+      System.out.println("[1] Se medlemmer i restance");
+      System.out.println("[2] Træk kontingent fra alle medlemmer");
+      System.out.println("[0]");
       
+      System.out.print("Vaelg:");
+      
+      if (input.hasNextInt())
+      {
+         choice = input.nextInt();
+         switchMenu(input, choice);
+      }      
+   }   
      
-   
+   public static void switchMenu(Scanner input, int choice)
+   {
+      switch (choice)
+      {
+      
+         case 0: System.out.println("Goodbye"); break;
+         
+         case 1: Accountant.printDebtors(); break;
+            
+         case 2: Accountant.subtractPayment(); break;
+         
+         default: System.out.println("Prøv igen"); printMenu();       
+      }
+      
+   }
+
    
    
 }

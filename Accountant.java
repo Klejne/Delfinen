@@ -1,5 +1,7 @@
 public class Accountant //extends User
 {
+   
+   
    public static void printDebtors()
    {
       //Member.debtors();
@@ -11,6 +13,11 @@ public class Accountant //extends User
    }
    
    public static void readDebtors()
+   {
+   
+   }
+   
+   public static void subtractPayment()
    {
    
    }

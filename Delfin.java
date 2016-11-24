@@ -12,6 +12,6 @@ public class Delfin
       
       }  
       
-
+      User.printMenu();
    }
 }
