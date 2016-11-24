@@ -90,10 +90,13 @@ public class Member
          
 
          member = new Member(resultID, name, resultBirthday, resultBalance);
-       
-         System.out.print(member);
+         
+         Member.all.add(member);
+         System.out.print(member);  //printer det enkelte medlem
+         
       }
       
+      //System.out.print(Member.all); //printer ArrayList af members
       return null;
 
    }
