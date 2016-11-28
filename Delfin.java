@@ -12,6 +12,7 @@ public class Delfin
       
       }  
       
-      Accountant.printMenu();
+      //Accountant.printMenu();
+      Chairperson.printMenu();
    }
 }

@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.PrintStream;
 
 public class Chairperson extends User
 {
@@ -34,7 +36,7 @@ public class Chairperson extends User
       
          case 0: System.out.println("Farvel."); break;
         
-         case 1: readMembers(); break;
+         case 1: printMembers(); break;
          
          case 2: createMember(); break;
             
@@ -45,14 +47,37 @@ public class Chairperson extends User
       
    }
    
-   public static void readMembers()
+   public static ArrayList<Member> printMembers()
    {
-      //An overview of all members
+      ArrayList<Member> member;
+      member = MemberList.all;
+      System.out.println(member);
+      
+      return member;  
    }
    
    public static void createMember()
    {
-      //Add member to file
+      ArrayList<Member> member2 = printMembers();
+      Scanner scanner = new Scanner(System.in);
+      
+      PrintStream output;
+      output = FileManager.write("members.csv");  
+      
+      int j;
+      String name = "";
+      while(scanner.hasNextLine())
+      {
+         name = scanner.nextLine();
+      }
+      System.out.println(name);
+      
+      
+      /*for (int i = 0; i < member2.size(); i++)
+      {
+         output.print(member2.add(i));
+      }*/
+   
    }
    
    public static void editMember()
