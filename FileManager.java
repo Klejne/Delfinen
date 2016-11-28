@@ -13,14 +13,11 @@ public class FileManager
       {
          output = new PrintStream(new File(filename));
       }
-      
       catch(FileNotFoundException ex)
       {
          System.out.print(ex);
          return null;  
       }
-      
-      
       
       return output;
    }

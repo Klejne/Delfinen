@@ -12,8 +12,7 @@ public class User
    public User(String login, String password)  //constructor
    {
       this.login = login;
-      this.password = password;
-      
+      this.password = password;      
    }
    
    public static boolean login()
@@ -39,9 +38,6 @@ public class User
          {
             System.out.println("Velkommen!");
             success = true;
-            
-            
-          
          }
       }
       

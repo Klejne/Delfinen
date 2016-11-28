@@ -30,14 +30,13 @@ public class Member
    }
    
    
-   
    public static ArrayList<Member> debtor()
    {
       ArrayList<Member> debtor = new ArrayList<Member>();   ///IKKE FÆRDIGT
       
       int i = 0;
       
-      for (Member member: all)  //for each
+      for (Member member : all)  //for each
       {        
          if (member.balance < 0)
          {  
