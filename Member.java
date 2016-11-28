@@ -12,8 +12,6 @@ public class Member
    //public GregorianCalendar (int year, int month, int dayOfMonth) birthday;
    public int birthday;
    
-   public static ArrayList<Member> all = new ArrayList();
-   
    public String toString()   //kaldes automatisk de steder hvor objektet automatisk konverteres til en streng
    {
       String string = String.format("%-4d %-15s %d %5d \n", id, name, birthday, balance);
@@ -36,7 +34,7 @@ public class Member
       
       int i = 0;
       
-      for (Member member : all)  //for each
+      for (Member member : MemberList.all)  //for each
       {        
          if (member.balance < 0)
          {  
@@ -90,7 +88,7 @@ public class Member
 
          member = new Member(resultID, name, resultBirthday, resultBalance);
          
-         Member.all.add(member);
+         MemberList.all.add(member);
          System.out.print(member);  //printer det enkelte medlem
          
       }

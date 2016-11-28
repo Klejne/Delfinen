@@ -2,7 +2,7 @@ public class Delfin
 {  
    public static void main(String[] args)
    {
-      Member.populate();
+      MemberList.populate();
       //Member.debtors();
       Member.debtorsToFile();
       User.populate();
