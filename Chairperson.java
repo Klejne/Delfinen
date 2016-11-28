@@ -61,16 +61,24 @@ public class Chairperson extends User
       ArrayList<Member> member2 = printMembers();
       Scanner scanner = new Scanner(System.in);
       
-      PrintStream output;
-      output = FileManager.write("members.csv");  
+      //PrintStream output;
+      //output = FileManager.write("members.csv");  
       
-      int j;
+      int id = 0;
       String name = "";
+      int birthday = 0;
+      int balance = 0;
+      
+      System.out.println("Indtast navn");
       while(scanner.hasNextLine())
       {
          name = scanner.nextLine();
       }
+      
       System.out.println(name);
+      //output.println(name);
+      
+      MemberList.addMember(id, name, birthday, balance);
       
       
       /*for (int i = 0; i < member2.size(); i++)

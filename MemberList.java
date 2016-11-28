@@ -5,6 +5,11 @@ public class MemberList
 {
    public static ArrayList<Member> all = new ArrayList();
    
+   public static void addMember(int id, String name, int birthday, int balance)
+   {  
+      Member member = new Member(id, name, birthday, balance);
+   }
+   
    public static ArrayList<Member> populate()
    {
       Scanner input;
