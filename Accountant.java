@@ -31,11 +31,11 @@ public class Accountant extends User
       switch (choice)
       {
       
-         case 0: System.out.println("Goodbye"); break;
+         case 0: System.out.println("Farvel"); break;
          
-         case 1: Accountant.printDebtors(); break;
+         case 1: printDebtors(); break;
             
-         case 2: Accountant.subtractPayment(); break;
+         case 2: subtractPayment(); break;
          
          default: System.out.println("Prøv igen"); printMenu();       
       }
