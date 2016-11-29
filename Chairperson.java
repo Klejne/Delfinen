@@ -47,18 +47,19 @@ public class Chairperson extends User
       
    }
    
-   public static ArrayList<Member> printMembers()
+   public static void printMembers()
    {
-      ArrayList<Member> member;
-      member = MemberList.all;
-      System.out.println(member);
       
-      return member;  
+      for (Member member : MemberList.all)
+      {
+         System.out.println(member);
+      }
+      
    }
    
    public static void createMember()
    {
-      ArrayList<Member> member2 = printMembers();
+      ArrayList<Member> member2 = MemberList.all;
       Scanner scanner = new Scanner(System.in);
       
       //PrintStream output;

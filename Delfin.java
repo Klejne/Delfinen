@@ -4,7 +4,7 @@ public class Delfin
    {
       MemberList.populate();
       //Member.debtors();
-      Member.debtorsToFile();
+      MemberList.debtorsToFile();
       User.populate();
       
       // while (User.login() == false) // Den bliver kørt igen, hvis login eller password er forkert.
