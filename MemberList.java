@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintStream;
+import java.util.GregorianCalendar;
 
 public class MemberList
 {
    public static ArrayList<Member> all = new ArrayList();
    
-   public static void addMember(int id, String name, int birthday, int balance)
+   public static void addMember(int id, String name, GregorianCalendar birthday, int balance)
    {  
       Member member = new Member(id, name, birthday, balance);
       
@@ -32,21 +33,31 @@ public class MemberList
          String name;
          String birthday;
          String balance;
+         String birthYear;
+         String birthMonth;
          
          id = input.next();
          name = input.next();
          birthday = input.next();
          balance = input.next();
+         birthMonth = input.next();
+         birthYear = input.next();
          
          int resultID;
          int resultBirthday;
+         int resultBirthMonth;
+         int resultBirthYear;
          int resultBalance;
          
          resultID = Integer.parseInt(id);      //konverterer String til int
          resultBirthday = Integer.parseInt(birthday);
+         resultBirthMonth = Integer.parseInt(birthMonth);
+         resultBirthYear = Integer.parseInt(birthYear);
          resultBalance = Integer.parseInt(balance);
          
-         member = new Member(resultID, name, resultBirthday, resultBalance);
+         GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
+         
+         member = new Member(resultID, name, birthDate, resultBalance);
          
          MemberList.all.add(member);
          
