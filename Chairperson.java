@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.PrintStream;
+import java.util.GregorianCalendar;
 
 public class Chairperson extends User
 {
@@ -71,6 +72,8 @@ public class Chairperson extends User
       
       String name;
       int birthday;
+      int birthMonth;
+      int birthYear;
       int balance = 0;
       Member last;      //typen Member med navnet last (den sidste oprettet)
       
@@ -90,20 +93,24 @@ public class Chairperson extends User
          return;
       }
       
-      System.out.println("Indtast fødselsår");
+      System.out.println("Indtast fødselsdato (dd mm yyyy)");
       if (scanner.hasNextInt())
       {
          birthday = scanner.nextInt();
+         birthMonth = scanner.nextInt();
+         birthYear = scanner.nextInt();
+         
       }
       else 
       {
          return;
       }
       
+      GregorianCalendar birthDate = new GregorianCalendar(birthYear, birthMonth, birthday);
             
       System.out.printf("Du har tilføjet: %d | %s | %d | %d\n", id, name, birthday, balance);
       
-      MemberList.addMember(id, name, birthday, balance);
+      MemberList.addMember(id, name, birthDate, balance);
       
       
       MemberList.writeToFile();

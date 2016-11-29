@@ -55,7 +55,7 @@ public class MemberList
          resultBirthYear = Integer.parseInt(birthYear);
          resultBalance = Integer.parseInt(balance);
          
-         GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday)
+         GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
          
          member = new Member(resultID, name, birthDate, resultBalance);
          
