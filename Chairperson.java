@@ -18,6 +18,7 @@ public class Chairperson extends User
       System.out.println("[1] Se medlemmer");
       System.out.println("[2] Indmeld medlemmer");
       System.out.println("[3] Ret i medlemsoplysninger");
+      System.out.println("[4] Slet medlem");
       System.out.println("[0] Luk");
       
       System.out.print("Vaelg:");
@@ -42,6 +43,8 @@ public class Chairperson extends User
             
          case 3: editMember(); break;
          
+         case 4: deleteMember(); break;
+         
          default: System.out.println("Prøv igen"); printMenu();       
       }
       
@@ -55,33 +58,63 @@ public class Chairperson extends User
          System.out.println(member);
       }
       
+      printMenu();
    }
    
    public static void createMember()
    {
-      ArrayList<Member> member2 = MemberList.all;
-      Scanner scanner = new Scanner(System.in);
+      Scanner scanner;
+      
+      scanner = new Scanner(System.in);
       
       //PrintStream output;
       //output = FileManager.write("members.csv");  
       
       int id = 0;
-      String name = "";
-      int birthday = 0;
+      
+      String name;
+      int birthday;
       int balance = 0;
+      Member last;      //typen Member med navnet last (den sidste oprettet)
+      
+      last = MemberList.all.get(MemberList.all.size() - 1);
+      
+      id = last.id + 1;
+      
+      System.out.println(id);
       
       System.out.println("Indtast navn");
-      while(scanner.hasNextLine())
+      if (scanner.hasNextLine())
       {
          name = scanner.nextLine();
       }
+      else 
+      {
+         return;
+      }
       
       System.out.println(name);
-      //output.println(name);
+      
+      System.out.println("Indtast fødselsår");
+      if (scanner.hasNextInt())
+      {
+         birthday = scanner.nextInt();
+      }
+      else 
+      {
+         return;
+      }
+      
+      System.out.println(birthday);
+      
+            
+      System.out.printf("%d,%s,%d,%d\n", id, name, birthday, balance);
+        
       
       MemberList.addMember(id, name, birthday, balance);
       
       
+      printMenu();
       /*for (int i = 0; i < member2.size(); i++)
       {
          output.print(member2.add(i));
@@ -92,5 +125,10 @@ public class Chairperson extends User
    public static void editMember()
    {
       //Search for member, and edit it.   
+   }
+   
+   static void deleteMember()
+   {
+   
    }
 }

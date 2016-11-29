@@ -9,10 +9,12 @@ public class MemberList
    public static void addMember(int id, String name, int birthday, int balance)
    {  
       Member member = new Member(id, name, birthday, balance);
+      
+      MemberList.all.add(member);
    }
    
    
-   public static ArrayList<Member> populate()
+   public static ArrayList<Member> readFromFile()
    {
       Scanner input;
       Member member;
