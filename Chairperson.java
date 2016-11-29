@@ -67,9 +67,6 @@ public class Chairperson extends User
       
       scanner = new Scanner(System.in);
       
-      PrintStream output;
-      output = FileManager.write("members.csv");  
-      
       int id = 0;
       
       String name;
@@ -108,19 +105,12 @@ public class Chairperson extends User
       
       MemberList.addMember(id, name, birthday, balance);
       
-      //for hvert member af typen Member i ArrayListen MemberList.all 
-      for (Member member : MemberList.all)
-      {
-         output.printf("%d,%s,%d,%d%s", member.id, member.name, member.birthday, member.balance, System.lineSeparator());
-      }
       
+      MemberList.writeToFile();
       
       printMenu();
-      /*for (int i = 0; i < member2.size(); i++)
-      {
-         output.print(member2.add(i));
-      }*/
-   
+      
+  
    }
    
    public static void editMember()
@@ -130,6 +120,6 @@ public class Chairperson extends User
    
    static void deleteMember()
    {
-   
+      //Delete member
    }
 }

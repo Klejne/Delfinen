@@ -12,7 +12,7 @@ public class Member
    public String toString()   //kaldes automatisk de steder hvor objektet konverteres til en streng
    {
       String string;
-      string = String.format("%-4d %-15s %d %5d \n", id, name, birthday, balance);
+      string = String.format("%-4d %-15s %d %5d", id, name, birthday, balance);
       
       return string;
    }

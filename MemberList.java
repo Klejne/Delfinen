@@ -57,6 +57,17 @@ public class MemberList
 
    }
    
+   public static void writeToFile()
+   {
+      PrintStream output;
+      output = FileManager.write("members.csv");  
+      
+      //for hvert member af typen Member i ArrayListen MemberList.all 
+      for (Member member : MemberList.all)
+      {
+         output.printf("%d,%s,%d,%d%s", member.id, member.name, member.birthday, member.balance, System.lineSeparator());
+      }
+   }
    
    public static ArrayList<Member> debtors()
    {
