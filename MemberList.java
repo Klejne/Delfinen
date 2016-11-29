@@ -26,7 +26,7 @@ public class MemberList
       //System.lineSeparator læser selv om det er \n, \r eller \n\r
       input.useDelimiter(",|" + System.lineSeparator());    
 
-      while (input.hasNextLine())
+      while (input.hasNext())
       {  
          String id;           //vi læser det som string, fordi den kan splitte på et komma
          String name;

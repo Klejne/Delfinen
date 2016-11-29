@@ -67,8 +67,8 @@ public class Chairperson extends User
       
       scanner = new Scanner(System.in);
       
-      //PrintStream output;
-      //output = FileManager.write("members.csv");  
+      PrintStream output;
+      output = FileManager.write("members.csv");  
       
       int id = 0;
       
@@ -93,8 +93,6 @@ public class Chairperson extends User
          return;
       }
       
-      System.out.println(name);
-      
       System.out.println("Indtast fødselsår");
       if (scanner.hasNextInt())
       {
@@ -105,13 +103,16 @@ public class Chairperson extends User
          return;
       }
       
-      System.out.println(birthday);
-      
             
-      System.out.printf("%d,%s,%d,%d\n", id, name, birthday, balance);
-        
+      System.out.printf("Du har tilføjet: %d | %s | %d | %d\n", id, name, birthday, balance);
       
       MemberList.addMember(id, name, birthday, balance);
+      
+      //for hvert member af typen Member i ArrayListen MemberList.all 
+      for (Member member : MemberList.all)
+      {
+         output.printf("%d,%s,%d,%d%s", member.id, member.name, member.birthday, member.balance, System.lineSeparator());
+      }
       
       
       printMenu();
