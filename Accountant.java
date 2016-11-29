@@ -44,7 +44,7 @@ public class Accountant extends User
    
    public static void printDebtors()
    {
-      //Member.debtors();
+      MemberList.debtors();
    }
    
    public static void writeDebtors()
