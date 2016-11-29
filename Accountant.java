@@ -44,7 +44,16 @@ public class Accountant extends User
    
    public static void printDebtors()
    {
-      MemberList.debtors();
+     
+      
+      //for hvert member af typen Member i ArrayListen MemberList.debtors 
+      for (Member member : MemberList.debtors())
+      {
+         System.out.printf("%d | %-10s | %5d%s", member.id, member.name, member.balance, System.lineSeparator());
+      }
+      
+      printMenu();
+    
    }
    
    public static void writeDebtors()
