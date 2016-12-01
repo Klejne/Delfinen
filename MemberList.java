@@ -38,10 +38,10 @@ public class MemberList
          
          id = input.next();
          name = input.next();
+         birthYear = input.next();
+         birthMonth = input.next();
          birthday = input.next();
          balance = input.next();
-         birthMonth = input.next();
-         birthYear = input.next();
          
          int resultID;
          int resultBirthday;
