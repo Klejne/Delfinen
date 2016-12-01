@@ -8,9 +8,9 @@ public class MemberList
 {
    public static ArrayList<Member> all = new ArrayList();
    
-   public static void addMember(int id, String name, GregorianCalendar birthday, int balance, int paidYear)
+   public static void addMember(int id, String name, GregorianCalendar birthday, int paidYear)
    {  
-      Member member = new Member(id, name, birthday, balance, paidYear);
+      Member member = new Member(id, name, birthday, paidYear);
       
       MemberList.all.add(member);
    }
@@ -33,7 +33,6 @@ public class MemberList
          String id;           //vi læser det som string, fordi den kan splitte på et komma
          String name;
          String birthday;
-         String balance;
          String birthYear;
          String birthMonth;
          String paidYear;
@@ -43,26 +42,23 @@ public class MemberList
          birthYear = input.next();
          birthMonth = input.next();
          birthday = input.next();
-         balance = input.next();
          paidYear = input.next();
          
          int resultID;
          int resultBirthday;
          int resultBirthMonth;
          int resultBirthYear;
-         int resultBalance;
          int resultPaidYear;
          
          resultID = Integer.parseInt(id);      //konverterer String til int
          resultBirthday = Integer.parseInt(birthday);
          resultBirthMonth = Integer.parseInt(birthMonth)-1;
          resultBirthYear = Integer.parseInt(birthYear);
-         resultBalance = Integer.parseInt(balance);
          resultPaidYear = Integer.parseInt(paidYear);
          
          GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
          
-         member = new Member(resultID, name, birthDate, resultBalance, resultPaidYear);
+         member = new Member(resultID, name, birthDate, resultPaidYear);
          
          MemberList.all.add(member);
          
@@ -81,13 +77,12 @@ public class MemberList
       //for hvert member af typen Member i ArrayListen MemberList.all 
       for (Member member : MemberList.all)
       {
-         output.printf("%d,%s,%d,%d,%d,%d,%d%s",
+         output.printf("%d,%s,%d,%d,%d,%d%s",
             member.id,
             member.name,
             member.birthday.get(Calendar.YEAR),
             member.birthday.get(Calendar.MONTH)+1,
             member.birthday.get(Calendar.DAY_OF_MONTH),
-            member.balance,
             member.paidYear,
             System.lineSeparator()
          );
@@ -100,7 +95,7 @@ public class MemberList
       
       for (Member member : MemberList.all)  //for each
       {        
-         if (member.balance < 0)
+         if (member.paidYear < Calendar.getInstance().get(Calendar.YEAR))
          {  
             debtors.add(member);
             

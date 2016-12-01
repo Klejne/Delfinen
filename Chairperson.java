@@ -75,7 +75,6 @@ public class Chairperson extends User
       int birthday;
       int birthMonth;
       int birthYear;
-      int balance = 0;
       int paidYear = Calendar.getInstance().get(Calendar.YEAR);
       Member last;      //typen Member med navnet last (den sidste oprettet)
       
@@ -99,7 +98,7 @@ public class Chairperson extends User
       if (scanner.hasNextInt())
       {
          birthday = scanner.nextInt();
-         birthMonth = scanner.nextInt()-1;
+         birthMonth = scanner.nextInt();
          birthYear = scanner.nextInt();
          
       }
@@ -108,11 +107,11 @@ public class Chairperson extends User
          return;
       }
       
-      GregorianCalendar birthDate = new GregorianCalendar(birthYear, birthMonth, birthday);
+      GregorianCalendar birthDate = new GregorianCalendar(birthYear, birthMonth-1, birthday);
             
-      System.out.printf("Du har tilføjet: %d | %s | %d | %d\n", id, name, birthday, balance);
-      
-      MemberList.addMember(id, name, birthDate, balance, paidYear);
+      System.out.printf("Du har tilføjet: %d | %s | %02d/%02d/%d\n", id, name, birthday, birthMonth, birthYear);
+     
+      MemberList.addMember(id, name, birthDate, paidYear);
       
       
       MemberList.writeToFile();
