@@ -9,7 +9,7 @@ public class Member
    public int balance;
    public String name;
    public GregorianCalendar birthday;
-   // public int paidYear;
+   public int paidYear;
    
    
    public String toString()   //kaldes automatisk de steder hvor objektet konverteres til en streng
@@ -19,7 +19,7 @@ public class Member
          id,
          name,
          birthday.get(Calendar.DAY_OF_MONTH),
-         birthday.get(Calendar.MONTH),
+         birthday.get(Calendar.MONTH)+1,
          birthday.get(Calendar.YEAR),
          balance,
          paidYear

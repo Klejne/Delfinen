@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintStream;
 import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 public class MemberList
 {
    public static ArrayList<Member> all = new ArrayList();
    
-   public static void addMember(int id, String name, GregorianCalendar birthday, int balance)
+   public static void addMember(int id, String name, GregorianCalendar birthday, int balance, int paidYear)
    {  
-      Member member = new Member(id, name, birthday, balance);
+      Member member = new Member(id, name, birthday, balance, paidYear);
       
       MemberList.all.add(member);
    }
@@ -35,6 +36,7 @@ public class MemberList
          String balance;
          String birthYear;
          String birthMonth;
+         String paidYear;
          
          id = input.next();
          name = input.next();
@@ -42,22 +44,25 @@ public class MemberList
          birthMonth = input.next();
          birthday = input.next();
          balance = input.next();
+         paidYear = input.next();
          
          int resultID;
          int resultBirthday;
          int resultBirthMonth;
          int resultBirthYear;
          int resultBalance;
+         int resultPaidYear;
          
          resultID = Integer.parseInt(id);      //konverterer String til int
          resultBirthday = Integer.parseInt(birthday);
-         resultBirthMonth = Integer.parseInt(birthMonth);
+         resultBirthMonth = Integer.parseInt(birthMonth)-1;
          resultBirthYear = Integer.parseInt(birthYear);
          resultBalance = Integer.parseInt(balance);
+         resultPaidYear = Integer.parseInt(paidYear);
          
          GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
          
-         member = new Member(resultID, name, birthDate, resultBalance);
+         member = new Member(resultID, name, birthDate, resultBalance, resultPaidYear);
          
          MemberList.all.add(member);
          
@@ -76,7 +81,16 @@ public class MemberList
       //for hvert member af typen Member i ArrayListen MemberList.all 
       for (Member member : MemberList.all)
       {
-         output.printf("%d,%s,%d,%d%s", member.id, member.name, member.birthday, member.balance, System.lineSeparator());
+         output.printf("%d,%s,%d,%d,%d,%d,%d%s",
+            member.id,
+            member.name,
+            member.birthday.get(Calendar.YEAR),
+            member.birthday.get(Calendar.MONTH)+1,
+            member.birthday.get(Calendar.DAY_OF_MONTH),
+            member.balance,
+            member.paidYear,
+            System.lineSeparator()
+         );
       }
    }
    

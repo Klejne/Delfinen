@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.PrintStream;
 import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 public class Chairperson extends User
 {
@@ -75,6 +76,7 @@ public class Chairperson extends User
       int birthMonth;
       int birthYear;
       int balance = 0;
+      int paidYear = Calendar.getInstance().get(Calendar.YEAR);
       Member last;      //typen Member med navnet last (den sidste oprettet)
       
       last = MemberList.all.get(MemberList.all.size() - 1);
@@ -97,7 +99,7 @@ public class Chairperson extends User
       if (scanner.hasNextInt())
       {
          birthday = scanner.nextInt();
-         birthMonth = scanner.nextInt();
+         birthMonth = scanner.nextInt()-1;
          birthYear = scanner.nextInt();
          
       }
@@ -110,7 +112,7 @@ public class Chairperson extends User
             
       System.out.printf("Du har tilføjet: %d | %s | %d | %d\n", id, name, birthday, balance);
       
-      MemberList.addMember(id, name, birthDate, balance);
+      MemberList.addMember(id, name, birthDate, balance, paidYear);
       
       
       MemberList.writeToFile();
