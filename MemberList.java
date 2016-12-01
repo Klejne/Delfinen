@@ -15,7 +15,7 @@ public class MemberList
    }
    
    
-   public static ArrayList<Member> readFromFile()
+   public static void readFromFile()
    {
       Scanner input;
       Member member;
@@ -64,7 +64,7 @@ public class MemberList
       }
       
       //System.out.print(MemberList.all); //printer ArrayList af members
-      return null;
+      
 
    }
    
