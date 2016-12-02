@@ -123,7 +123,7 @@ public class Chairperson extends User
    
    public static void editMember()
    {
-      //Search for member, and edit it.   
+        
    }
    
    static void deleteMember()

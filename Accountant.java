@@ -62,35 +62,28 @@ public class Accountant extends User
       
       if (input.hasNextInt())
       {
-         Member foundMember = null;
+         Member member = null;
          memberID = input.nextInt();
          
          
-         for (Member member : MemberList.all)
-         {
-            if (memberID == member.id)
-            {
-               foundMember = member;
-               
-               break;
-            }               
-         }
+         member = MemberList.find(memberID);
          
-         if (foundMember == null)
+                  
+         if (member == null)
          {
             System.out.print("Kunne ikke finde medlem - prøv igen");
             updatePayment(input);
             return;
          }
          
-         System.out.println(foundMember);
+         System.out.println(member);
          System.out.println("[1] Har betalt i år");
          System.out.println("[0] Gå tilbage");
          
          if (input.nextInt() == 1)
          {
-            foundMember.paidYear = 2016;
-            System.out.println(foundMember);
+            member.paidYear = 2016;
+            System.out.println(member);
             
             MemberList.writeToFile();
          }

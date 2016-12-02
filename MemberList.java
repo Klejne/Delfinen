@@ -65,9 +65,22 @@ public class MemberList
       }
       
       //System.out.print(MemberList.all); //printer ArrayList af members
-      
-
    }
+   
+   
+   public static Member find(int memberID)
+   {  
+      for (Member member : MemberList.all)
+      {
+         if (memberID == member.id)
+         {            
+            return member;
+         }               
+      }
+      
+      return null;     
+   }
+   
    
    public static void writeToFile()
    {
