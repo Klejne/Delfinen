@@ -30,16 +30,11 @@ public class Accountant extends User
    {
       switch (choice)
       {
-      
          case 0: System.out.println("Farvel"); break;
-         
-         case 1: printDebtors(); break;
-            
-         case 2: updatePayment(); break;
-         
+         case 1: printDebtors(); break;    
+         case 2: updatePayment(input); break;
          default: System.out.println("Prøv igen"); printMenu();       
-      }
-      
+      }     
    }
    
    public static void printDebtors()
@@ -53,21 +48,53 @@ public class Accountant extends User
       }
       
       printMenu();
-    
    }
    
-   public static void writeDebtors()
+   public static void updatePayment(Scanner input)
    {
-      //Member.debtorsToFile();   
-   }
-   
-   public static void readDebtors()
-   {
-   
-   }
-   
-   public static void updatePayment()
-   {
-   
+      int memberID;
+      
+      memberID = 0;
+      
+      System.out.print("Tast medlemsnummer");
+      
+      
+      
+      if (input.hasNextInt())
+      {
+         Member foundMember = null;
+         memberID = input.nextInt();
+         
+         
+         for (Member member : MemberList.all)
+         {
+            if (memberID == member.id)
+            {
+               foundMember = member;
+               
+               break;
+            }               
+         }
+         
+         if (foundMember == null)
+         {
+            System.out.print("Kunne ikke finde medlem - prøv igen");
+            updatePayment(input);
+            return;
+         }
+         
+         System.out.println(foundMember);
+         System.out.println("[1] Har betalt i år");
+         System.out.println("[0] Gå tilbage");
+         
+         if (input.nextInt() == 1)
+         {
+            foundMember.paidYear = 2016;
+            System.out.println(foundMember);
+            
+            MemberList.writeToFile();
+         }
+         printMenu();         
+      }  
    }
 }
