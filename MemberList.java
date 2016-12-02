@@ -106,19 +106,4 @@ public class MemberList
       return debtors;
    }
    
-   
-   public static void debtorsToFile()
-   {  
-      PrintStream output;
-      ArrayList<Member> debtorsPrint;
-      
-      output = FileManager.write("debt.txt"); 
-      debtorsPrint = debtors();
-      
-      for (Member debtor : debtorsPrint)  //for each
-      {
-         output.print(debtor);
-      }
-   } 
-
 }

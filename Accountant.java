@@ -14,8 +14,8 @@ public class Accountant extends User
     
       System.out.println("Kasserer for Delfinen");
       System.out.println("[1] Se medlemmer i restance");
-      System.out.println("[2] Træk kontingent fra alle medlemmer");
-      System.out.println("[0]");
+      System.out.println("[2] Opdater Medlemsbetaling");
+      System.out.println("[0] Luk");
       
       System.out.print("Vaelg:");
       
@@ -35,7 +35,7 @@ public class Accountant extends User
          
          case 1: printDebtors(); break;
             
-         case 2: subtractPayment(); break;
+         case 2: updatePayment(); break;
          
          default: System.out.println("Prøv igen"); printMenu();       
       }
@@ -44,12 +44,12 @@ public class Accountant extends User
    
    public static void printDebtors()
    {
-     
+      System.out.printf("%4s | %-10s | Sidst Betalt%s" , "ID", "Navn", System.lineSeparator());
       
       //for hvert member af typen Member i ArrayListen MemberList.debtors 
       for (Member member : MemberList.debtors())
       {
-         System.out.printf("%d | %-10s | %5d%s", member.id, member.name, System.lineSeparator());
+         System.out.printf("%4d | %-10s | %5d%s", member.id, member.name, member.paidYear, System.lineSeparator());
       }
       
       printMenu();
@@ -66,7 +66,7 @@ public class Accountant extends User
    
    }
    
-   public static void subtractPayment()
+   public static void updatePayment()
    {
    
    }
