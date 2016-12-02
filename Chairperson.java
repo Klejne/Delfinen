@@ -45,7 +45,7 @@ public class Chairperson extends User
             
          case 3: editMember(input); break;
          
-         case 4: deleteMember(); break;
+         case 4: deleteMember(input); break;
          
          default: System.out.println("Prøv igen"); printMenu();       
       }
@@ -183,8 +183,46 @@ public class Chairperson extends User
       }
    }
    
-   static void deleteMember()
+   static void deleteMember(Scanner input)
    {
-      //Delete member
+      int memberID;
+      
+      memberID = 0;
+      
+      System.out.print("Tast medlemsnummer");
+      
+      if (input.hasNextInt())
+      {  
+         int choice;
+         Member member = null;
+         memberID = input.nextInt();
+         
+         choice = 0;
+         member = MemberList.find(memberID);
+         
+         if (member == null)
+         {
+            System.out.print("Kunne ikke finde medlem - prøv igen");
+            return;
+         }
+         
+         System.out.println(member);
+         System.out.println("[1] Slet medlem" + member.name );
+         System.out.println("[0] Gå tilbage");
+         
+         System.out.print("Vaelg:");
+      
+         if (input.nextInt() == 1)
+         {
+            MemberList.all.remove(member);
+            
+            printMembers();
+            MemberList.writeToFile();
+         }
+         
+           
+      }
+ 
+      printMenu(); 
    }
 }
