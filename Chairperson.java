@@ -43,7 +43,7 @@ public class Chairperson extends User
          
          case 2: createMember(); break;
             
-         case 3: editMember(); break;
+         case 3: editMember(input); break;
          
          case 4: deleteMember(); break;
          
@@ -121,9 +121,66 @@ public class Chairperson extends User
   
    }
    
-   public static void editMember()
+   public static void editMember(Scanner input)
    {
-        
+      int memberID;
+      
+      memberID = 0;
+      
+      System.out.print("Tast medlemsnummer");
+      
+      if (input.hasNextInt())
+      {  
+         int choice;
+         Member member = null;
+         memberID = input.nextInt();
+         
+         choice = 0;
+         member = MemberList.find(memberID);
+         
+                  
+         if (member == null)
+         {
+            System.out.print("Kunne ikke finde medlem - prøv igen");
+            return;
+         }
+         
+         System.out.println(member);
+         System.out.println("[1] Ret navn");
+         System.out.println("[0] Gå tilbage");
+         
+         System.out.print("Vaelg:");
+      
+         if (input.hasNextInt())
+         {
+            choice = input.nextInt();
+         }
+         
+         switch (choice)
+         {
+            case 1: editName(input, member); break;    
+            case 2: break;
+            default: System.out.println("Prøv igen"); printMenu();       
+         }
+
+         printMenu();
+      }         
+   }
+   
+   public static void editName(Scanner input, Member member)
+   {
+      
+      System.out.println("Indtast nyt navn");
+      
+      input.nextLine();    //HACK:sluger linjeskift for meget fra nextInt i editMember()
+      
+      if (input.hasNextLine())
+      {
+         member.name = input.nextLine();
+         System.out.println(member);
+         
+         MemberList.writeToFile();
+      }
    }
    
    static void deleteMember()
