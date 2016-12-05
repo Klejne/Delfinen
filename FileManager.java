@@ -8,21 +8,17 @@ public class FileManager
    public static PrintStream write(String filename)
    {
       File file;
-      PrintStream output;
-
       file = new File(filename);
 
       try
       {
-         output = new PrintStream(file);
+         return new PrintStream(file);
       }
       catch (FileNotFoundException exception)
       {
          System.out.print(exception);
-         return null;  
+         return null;
       }
-      
-      return output;
    }
    
    public static Scanner read(String filename)
