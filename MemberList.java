@@ -60,19 +60,19 @@ public class MemberList
          inputLine.useDelimiter(",|" + System.lineSeparator());
 
          // Indlæs alle felter for dette medlem.
-         id = inputLine.next();
-         name = inputLine.next();
-         birthYear = inputLine.next();
+         id         = inputLine.next();
+         name       = inputLine.next();
+         birthYear  = inputLine.next();
          birthMonth = inputLine.next();
-         birthday = inputLine.next();
-         paidYear = inputLine.next();
+         birthday   = inputLine.next();
+         paidYear   = inputLine.next();
 
          // Konvertér alle Strings der skal være ints til int
-         resultID = Integer.parseInt(id);
-         resultBirthday = Integer.parseInt(birthday);
-         resultBirthMonth = Integer.parseInt(birthMonth)-1;
-         resultBirthYear = Integer.parseInt(birthYear);
-         resultPaidYear = Integer.parseInt(paidYear);
+         resultID         = Integer.parseInt(id);
+         resultBirthday   = Integer.parseInt(birthday);
+         resultBirthMonth = Integer.parseInt(birthMonth)-1; // GregorianCalendar tror Januar er måned 0.
+         resultBirthYear  = Integer.parseInt(birthYear);
+         resultPaidYear   = Integer.parseInt(paidYear);
 
          Calendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
 
