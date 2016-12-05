@@ -45,7 +45,9 @@ public class Member
       // For hvert `result` af typen `Result` i `ArrayList`en `results`
       for (Result result : results)
       {
-         if (result.time < bestTime)
+         // Dette resultat tæller kun, hvis det er bedre end det hidtil bedste
+         // OG (&&) er i den rigtige disciplin.
+         if (result.time < bestTime && result.discipline.equals(discipline))
          {
             bestTime = result.time;
          }
