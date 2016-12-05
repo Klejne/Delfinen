@@ -13,9 +13,9 @@ public class FileManager
       {
          output = new PrintStream(new File(filename));
       }
-      catch (FileNotFoundException ex)
+      catch (FileNotFoundException exception)
       {
-         System.out.print(ex);
+         System.out.print(exception);
          return null;  
       }
       
@@ -32,9 +32,9 @@ public class FileManager
       {
          input = new Scanner(file);
       }
-      catch (FileNotFoundException ex)
+      catch (FileNotFoundException exception)
       {
-         System.out.println(ex);
+         System.out.println(exception);
          return null;
       }
 
