@@ -7,11 +7,12 @@ public class FileManager
 {
    public static PrintStream write(String filename)
    {
+      File file = new File(filename);
       PrintStream output;
       
       try
       {
-         output = new PrintStream(new File(filename));
+         output = new PrintStream(file);
       }
       catch (FileNotFoundException exception)
       {
