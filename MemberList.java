@@ -30,25 +30,34 @@ public class MemberList
 
       while (input.hasNext())
       {  
+         Scanner scan;
+         String line = input.nextLine();
+         scan = new Scanner(line);
+         scan.useDelimiter(",|" + System.lineSeparator());
+         
+         
          String id;           //vi læser det som string, fordi den kan splitte på et komma
          String name;
          String birthday;
          String birthYear;
          String birthMonth;
          String paidYear;
+         String discipline;
+         String time;
          
-         id = input.next();
-         name = input.next();
-         birthYear = input.next();
-         birthMonth = input.next();
-         birthday = input.next();
-         paidYear = input.next();
+         id = scan.next();
+         name = scan.next();
+         birthYear = scan.next();
+         birthMonth = scan.next();
+         birthday = scan.next();
+         paidYear = scan.next();
          
          int resultID;
          int resultBirthday;
          int resultBirthMonth;
          int resultBirthYear;
          int resultPaidYear;
+         int resultTime;
          
          resultID = Integer.parseInt(id);      //konverterer String til int
          resultBirthday = Integer.parseInt(birthday);
@@ -59,6 +68,19 @@ public class MemberList
          GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
          
          member = new Member(resultID, name, birthDate, resultPaidYear);
+         
+         while(scan.hasNext())
+         {
+            discipline = scan.next();
+            time = scan.next();
+            
+            resultTime = Integer.parseInt(time);
+            
+            Result result = new Result(discipline, resultTime);
+            
+            member.results.add(result);
+             
+         }
          
          MemberList.all.add(member);
          

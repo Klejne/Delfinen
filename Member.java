@@ -9,6 +9,7 @@ public class Member
    public String name;
    public GregorianCalendar birthday;
    public int paidYear;
+   public ArrayList<Result> results = new ArrayList();
    
    
    public String toString()   //kaldes automatisk de steder hvor objektet konverteres til en streng
