@@ -51,10 +51,15 @@ public class MemberList
          int resultBirthYear;
          int resultPaidYear;
 
+         // Opret en ny Scanner, der kun scanner den linje vi kigger på.
+         // På den måde kan vi se, når vi er nået enden af linjen (så er der ikke flere Results)
          line = input.nextLine();
          inputLine = new Scanner(line);
+
+         // Split på komma og linjeseparatoren (linjeskift, etc.)
          inputLine.useDelimiter(",|" + System.lineSeparator());
 
+         // Indlæs alle felter for dette medlem.
          id = inputLine.next();
          name = inputLine.next();
          birthYear = inputLine.next();
@@ -105,6 +110,7 @@ public class MemberList
 
    public static Member find(int memberID)
    {
+      // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
       for (Member member : MemberList.all)
       {
          if (memberID == member.id)
@@ -122,7 +128,7 @@ public class MemberList
       PrintStream output;
       output = FileManager.write("members.csv");
 
-      //for hvert member af typen Member i ArrayListen MemberList.all
+      // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
       for (Member member : MemberList.all)
       {
          output.printf("%d,%s,%d,%d,%d,%d",
@@ -135,6 +141,7 @@ public class MemberList
 
          );
 
+         // For hvert `result` af typen `Result` i `ArrayList`en `member.results`
          for (Result result : member.results)
          {
             output.printf(",%s,%d", result.discipline, result.time);
@@ -144,21 +151,21 @@ public class MemberList
       }
    }
 
+
    public static ArrayList<Member> debtors()
    {
-      ArrayList<Member> debtors = new ArrayList<Member>();
+      ArrayList<Member> debtors;
+      debtors = new ArrayList();
 
-      for (Member member : MemberList.all)  //for each
+      // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
+      for (Member member : MemberList.all)
       {
          if (member.paidYear < Calendar.getInstance().get(Calendar.YEAR))
          {
             debtors.add(member);
-
-            //System.out.println(member.name + " " + member.balance);
          }
       }
 
       return debtors;
    }
-
 }
