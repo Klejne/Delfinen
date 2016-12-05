@@ -2,6 +2,8 @@
 *.gpj
 *.txt
 *.idea
+*.iml
+out/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
