@@ -7,9 +7,11 @@ public class FileManager
 {
    public static PrintStream write(String filename)
    {
-      File file = new File(filename);
+      File file;
       PrintStream output;
-      
+
+      file = new File(filename);
+
       try
       {
          output = new PrintStream(file);
@@ -26,9 +28,11 @@ public class FileManager
    public static Scanner read(String filename)
    {
    
-      File file = new File(filename);
+      File file;
       Scanner input;
       
+      file = new File(filename);
+
       try
       {
          input = new Scanner(file);
