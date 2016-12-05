@@ -35,7 +35,7 @@ public class MemberList
       while (input.hasNext())
       {
          String line;
-         Scanner scan;
+         Scanner inputLine;
 
          // Vi læser alt input som string, så at kunne splitte på komma.
          String id;
@@ -55,15 +55,15 @@ public class MemberList
          int resultTime;
 
          line = input.nextLine();
-         scan = new Scanner(line);
-         scan.useDelimiter(",|" + System.lineSeparator());
+         inputLine = new Scanner(line);
+         inputLine.useDelimiter(",|" + System.lineSeparator());
 
-         id = scan.next();
-         name = scan.next();
-         birthYear = scan.next();
-         birthMonth = scan.next();
-         birthday = scan.next();
-         paidYear = scan.next();
+         id = inputLine.next();
+         name = inputLine.next();
+         birthYear = inputLine.next();
+         birthMonth = inputLine.next();
+         birthday = inputLine.next();
+         paidYear = inputLine.next();
 
          resultID = Integer.parseInt(id);      //konverterer String til int
          resultBirthday = Integer.parseInt(birthday);
@@ -75,11 +75,11 @@ public class MemberList
          
          member = new Member(resultID, name, birthDate, resultPaidYear);
          
-         while(scan.hasNext())
+         while(inputLine.hasNext())
          {
-            discipline = scan.next();
+            discipline = inputLine.next();
             discipline = discipline.toUpperCase();
-            time = scan.next();
+            time = inputLine.next();
             
             resultTime = Integer.parseInt(time);
             
