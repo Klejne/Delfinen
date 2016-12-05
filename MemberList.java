@@ -118,15 +118,22 @@ public class MemberList
       //for hvert member af typen Member i ArrayListen MemberList.all 
       for (Member member : MemberList.all)
       {
-         output.printf("%d,%s,%d,%d,%d,%d%s",
+         output.printf("%d,%s,%d,%d,%d,%d",
             member.id,
             member.name,
             member.birthday.get(Calendar.YEAR),
             member.birthday.get(Calendar.MONTH)+1,
             member.birthday.get(Calendar.DAY_OF_MONTH),
-            member.paidYear,
-            System.lineSeparator()
+            member.paidYear
+            
          );
+         
+         for (Result result : member.results)
+         {
+            output.printf(",%s,%d", result.discipline, result.time);
+         }
+         
+         output.println();
       }
    }
    

@@ -102,8 +102,6 @@ public class Coach extends User
       
       System.out.print("Tast medlemsnummer");
       
-      
-      
       if (input.hasNextInt())
       {
          Member member = null;
@@ -120,11 +118,44 @@ public class Coach extends User
             return;
          }
          
+         input.nextLine();    //HACK: slug linjeskift
+         
          System.out.println(member);
          
+         System.out.println("Disciplin?");
          
+         String discipline;
+         
+         discipline = input.nextLine();
+         
+         System.out.println(discipline);
+         
+         System.out.println("Indtast tid i sekunder");
+         
+         String time;
+         
+         time = input.nextLine();
+         
+         time = time.replaceAll(",", ".");   //replaceAll-metoden ændrer komma til punktum
+         
+         double resultTime;
+         
+         resultTime = Double.parseDouble(time);
+          
+         System.out.println(resultTime);
+         
+         Result result;
+         
+         result = new Result(discipline.toUpperCase(), (int) (resultTime * 1000));
+         
+         member.results.add(result);
+         
+         MemberList.writeToFile();
          
          printMenu();         
       }  
    }
+   
+   
+   
 }
