@@ -20,10 +20,10 @@ public class FileManager
          return null;
       }
    }
-   
+
+
    public static Scanner read(String filename)
    {
-   
       File file;
       file = new File(filename);
 
@@ -37,5 +37,4 @@ public class FileManager
          return null;
       }
    }
-   
 }
