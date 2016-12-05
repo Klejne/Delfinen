@@ -12,6 +12,15 @@ public class Member
    public ArrayList<Result> results = new ArrayList();
    
    
+   public Member(int id, String name, GregorianCalendar birthday, int paidYear)  //constructor
+   {
+      this.id = id;
+      this.name = name;
+      this.birthday = birthday;
+      this.paidYear = paidYear;
+   }
+   
+   
    public String toString()   //kaldes automatisk de steder hvor objektet konverteres til en streng
    {
       String string;
@@ -28,12 +37,23 @@ public class Member
    }
    
    
-   public Member(int id, String name, GregorianCalendar birthday, int paidYear)  //constructor
+   public int bestTime(String discipline)
    {
-      this.id = id;
-      this.name = name;
-      this.birthday = birthday;
-      this.paidYear = paidYear;
+      int bestTime;
+      
+      bestTime = Integer.MAX_VALUE;
+      
+      for (Result result : results)
+      {
+         if (result.time < bestTime)
+         {
+            bestTime = result.time;
+         }
+      }
+      
+      return bestTime;
+      
    }
-     
+   
+   
 }

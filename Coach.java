@@ -40,7 +40,6 @@ public class Coach extends User
    
    public static void printResults()
    {
-      System.out.printf("%-4s | %-10s | Top 5%s" , "ID", "Navn", System.lineSeparator());
       
       //for hvert discipline af typen String i ArrayListen disciplines i klassen result 
       for (String discipline : Result.disciplines)
@@ -49,6 +48,7 @@ public class Coach extends User
          members = new ArrayList(); 
          
          System.out.println(discipline);
+         System.out.printf("%-2s | %-4s | %-10s | Toptid%s" ,"#", "ID", "Navn", System.lineSeparator());
          
          for (Member member : MemberList.all)
          {
@@ -56,10 +56,38 @@ public class Coach extends User
             {
                if (result.discipline.equals(discipline))
                {
-                  System.out.printf("%4d | %-10s | %4.2f s%s", member.id, member.name, result.time / 1000.0, System.lineSeparator());
+                  if (members.contains(member) == false)
+                  {
+                     members.add(member);
+                  }
                }
             }
          }
+         
+         for (int i = 1; i <= 5; i++)
+         {
+            Member bestMember;
+            
+            if (members.size() == 0)
+            {
+               break;
+            }
+      
+            bestMember = members.get(0);
+            
+            for (Member member : members)
+            {
+               if (bestMember.bestTime(discipline) > member.bestTime(discipline))
+               {
+                  bestMember = member;               
+               }
+            }
+            
+            members.remove(bestMember);
+            System.out.printf("%d. | %4d | %-10s | %4.2f s%s", i, bestMember.id, bestMember.name, bestMember.bestTime(discipline) / 1000.0, System.lineSeparator());
+            
+         }
+         
          System.out.println();
       }
       
