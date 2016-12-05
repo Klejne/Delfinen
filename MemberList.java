@@ -51,6 +51,8 @@ public class MemberList
          int resultBirthYear;
          int resultPaidYear;
 
+         Calendar birthDate;
+
          // Opret en ny Scanner, der kun scanner den linje vi kigger på.
          // På den måde kan vi se, når vi er nået enden af linjen (så er der ikke flere Results)
          line = input.nextLine();
@@ -74,7 +76,7 @@ public class MemberList
          resultBirthYear  = Integer.parseInt(birthYear);
          resultPaidYear   = Integer.parseInt(paidYear);
 
-         Calendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
+         birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
 
          member = new Member(resultID, name, birthDate, resultPaidYear);
 
