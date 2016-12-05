@@ -25,21 +25,17 @@ public class FileManager
    {
    
       File file;
-      Scanner input;
-      
       file = new File(filename);
 
       try
       {
-         input = new Scanner(file);
+         return new Scanner(file);
       }
       catch (FileNotFoundException exception)
       {
          System.out.println(exception);
          return null;
       }
-
-      return input;
    }
    
 }
