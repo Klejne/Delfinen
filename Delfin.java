@@ -5,8 +5,8 @@ public class Delfin
       MemberList.readFromFile();
       User.populate();
 
-       // Spørg efter username og password indtil login lykkes.
-       // while (User.login() == false) { }
+      // Spørg efter username og password indtil login lykkes.
+      // while (User.login() == false) { }
 
       Accountant.printMenu();
       Chairperson.printMenu();

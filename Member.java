@@ -7,12 +7,12 @@ public class Member
 {
    public int id;
    public String name;
-   public GregorianCalendar birthday;
+   public Calendar birthday; // Vi kan bruge Calendar, da det er en superklasse af GregorianCalendar
    public int paidYear;
    public ArrayList<Result> results = new ArrayList();
    
    
-   public Member(int id, String name, GregorianCalendar birthday, int paidYear)  //constructor
+   public Member(int id, String name, Calendar birthday, int paidYear)  //constructor
    {
       this.id = id;
       this.name = name;
@@ -24,6 +24,7 @@ public class Member
    public String toString()   //kaldes automatisk de steder hvor objektet konverteres til en streng
    {
       String string;
+
       string = String.format("%-4d %-15s %02d/%02d/%d %d",
          id,
          name,
