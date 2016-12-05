@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Coach extends User
 {
@@ -39,12 +40,27 @@ public class Coach extends User
    
    public static void printResults()
    {
-      System.out.printf("%4s | %-10s | Sidst Betalt%s" , "ID", "Navn", System.lineSeparator());
+      System.out.printf("%-4s | %-10s | Top 5%s" , "ID", "Navn", System.lineSeparator());
       
-      //for hvert member af typen Member i ArrayListen MemberList.debtors 
-      for (Member member : MemberList.all)
+      //for hvert discipline af typen String i ArrayListen disciplines i klassen result 
+      for (String discipline : Result.disciplines)
       {
-         System.out.printf("%4d | %-10s | %5d%s", member.id, member.name, member.paidYear, System.lineSeparator());
+         ArrayList<Member> members;
+         members = new ArrayList(); 
+         
+         System.out.println(discipline);
+         
+         for (Member member : MemberList.all)
+         {
+            for (Result result : member.results)
+            {
+               if (result.discipline.equals(discipline))
+               {
+                  System.out.printf("%4d | %-10s | %4.2f s%s", member.id, member.name, result.time / 1000.0, System.lineSeparator());
+               }
+            }
+         }
+         System.out.println();
       }
       
       printMenu();

@@ -72,6 +72,7 @@ public class MemberList
          while(scan.hasNext())
          {
             discipline = scan.next();
+            discipline = discipline.toUpperCase();
             time = scan.next();
             
             resultTime = Integer.parseInt(time);
