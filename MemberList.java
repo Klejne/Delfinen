@@ -8,21 +8,21 @@ public class MemberList
 {
    public static ArrayList<Member> all = new ArrayList();
 
-   
+
    public static void addMember(int id, String name, GregorianCalendar birthday, int paidYear)
-   {  
+   {
       Member member;
       member = new Member(id, name, birthday, paidYear);
-      
+
       MemberList.all.add(member);
    }
-   
-   
+
+
    public static void readFromFile()
    {
       Scanner input;
       Member member;
-      
+
       input = FileManager.read("members.csv");
       
       
@@ -30,7 +30,7 @@ public class MemberList
          useDelimiter splitter på de/t tegn (her: komma) der står i anførselstegn.
          System.lineSeparator læser selv om det er \n, \r eller \n\r
       */
-      input.useDelimiter(",|" + System.lineSeparator());    
+      input.useDelimiter(",|" + System.lineSeparator());
 
       while (input.hasNext())
       {
@@ -44,15 +44,12 @@ public class MemberList
          String birthYear;
          String birthMonth;
          String paidYear;
-         String discipline;
-         String time;
-         
+
          int resultID;
          int resultBirthday;
          int resultBirthMonth;
          int resultBirthYear;
          int resultPaidYear;
-         int resultTime;
 
          line = input.nextLine();
          inputLine = new Scanner(line);
@@ -65,63 +62,67 @@ public class MemberList
          birthday = inputLine.next();
          paidYear = inputLine.next();
 
-         resultID = Integer.parseInt(id);      //konverterer String til int
+         // Konvertér alle Strings der skal være ints til int
+         resultID = Integer.parseInt(id);
          resultBirthday = Integer.parseInt(birthday);
          resultBirthMonth = Integer.parseInt(birthMonth)-1;
          resultBirthYear = Integer.parseInt(birthYear);
          resultPaidYear = Integer.parseInt(paidYear);
-         
+
          Calendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
-         
+
          member = new Member(resultID, name, birthDate, resultPaidYear);
-         
-         while(inputLine.hasNext())
+
+         // Så længe der er mere tilbage i linjen, læser vi et resultat mere ind.
+         while (inputLine.hasNext())
          {
+            int resultTime;
+            String discipline;
+            String time;
+            Result result;
+
             discipline = inputLine.next();
             discipline = discipline.toUpperCase();
+
             time = inputLine.next();
-            
             resultTime = Integer.parseInt(time);
-            
-            Result result = new Result(discipline, resultTime);
-            
+
+            result = new Result(discipline, resultTime);
+
             member.results.add(result);
-            
-            if(Result.disciplines.contains(discipline) == false)
+
+            // Vi tilføjer kun den disciplin vi lige har læst, hvis den ikke findes i listen allerede.
+            if (Result.disciplines.contains(discipline) == false)
             {
                Result.disciplines.add(discipline);
             }
-             
          }
-         
+
          MemberList.all.add(member);
-         
       }
-      
-      //System.out.print(MemberList.all); //printer ArrayList af members
    }
-   
-   
+
+
    public static Member find(int memberID)
-   {  
+   {
       for (Member member : MemberList.all)
       {
          if (memberID == member.id)
-         {            
+         {
             return member;
-         }               
+         }
       }
-      
-      return null;     
+
+      return null;
    }
-   
-   
+
+
    public static void writeToFile()
    {
       PrintStream output;
-      output = FileManager.write("members.csv");  
-      
-      //for hvert member af typen Member i ArrayListen MemberList.all 
+      output = FileManager.write("members.csv");
+
+      //for hvert member af typen Member i ArrayListen MemberList.all
       for (Member member : MemberList.all)
       {
          output.printf("%d,%s,%d,%d,%d,%d",
@@ -131,33 +132,33 @@ public class MemberList
             member.birthday.get(Calendar.MONTH)+1,
             member.birthday.get(Calendar.DAY_OF_MONTH),
             member.paidYear
-            
+
          );
-         
+
          for (Result result : member.results)
          {
             output.printf(",%s,%d", result.discipline, result.time);
          }
-         
+
          output.println();
       }
    }
-   
+
    public static ArrayList<Member> debtors()
    {
       ArrayList<Member> debtors = new ArrayList<Member>();
-      
+
       for (Member member : MemberList.all)  //for each
-      {        
+      {
          if (member.paidYear < Calendar.getInstance().get(Calendar.YEAR))
-         {  
+         {
             debtors.add(member);
-            
+
             //System.out.println(member.name + " " + member.balance);
          }
       }
-      
+
       return debtors;
    }
-   
+
 }
