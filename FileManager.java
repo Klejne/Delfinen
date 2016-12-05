@@ -13,7 +13,7 @@ public class FileManager
       {
          output = new PrintStream(new File(filename));
       }
-      catch(FileNotFoundException ex)
+      catch (FileNotFoundException ex)
       {
          System.out.print(ex);
          return null;  
@@ -26,7 +26,6 @@ public class FileManager
    {
    
       File file = new File(filename);
-      
       Scanner input;
       
       try
@@ -38,6 +37,7 @@ public class FileManager
          System.out.println(ex);
          return null;
       }
+
       return input;
    }
    
