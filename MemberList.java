@@ -7,10 +7,12 @@ import java.util.Calendar;
 public class MemberList
 {
    public static ArrayList<Member> all = new ArrayList();
+
    
    public static void addMember(int id, String name, GregorianCalendar birthday, int paidYear)
    {  
-      Member member = new Member(id, name, birthday, paidYear);
+      Member member;
+      member = new Member(id, name, birthday, paidYear);
       
       MemberList.all.add(member);
    }
@@ -24,19 +26,19 @@ public class MemberList
       input = FileManager.read("members.csv");
       
       
-      //useDelimiter splitter på de/t tegn (her: komma) der står i anførselstegn.
-      //System.lineSeparator læser selv om det er \n, \r eller \n\r
+      /*
+         useDelimiter splitter på de/t tegn (her: komma) der står i anførselstegn.
+         System.lineSeparator læser selv om det er \n, \r eller \n\r
+      */
       input.useDelimiter(",|" + System.lineSeparator());    
 
       while (input.hasNext())
-      {  
+      {
+         String line;
          Scanner scan;
-         String line = input.nextLine();
-         scan = new Scanner(line);
-         scan.useDelimiter(",|" + System.lineSeparator());
-         
-         
-         String id;           //vi læser det som string, fordi den kan splitte på et komma
+
+         // Vi læser alt input som string, så at kunne splitte på komma.
+         String id;
          String name;
          String birthday;
          String birthYear;
@@ -45,27 +47,31 @@ public class MemberList
          String discipline;
          String time;
          
-         id = scan.next();
-         name = scan.next();
-         birthYear = scan.next();
-         birthMonth = scan.next();
-         birthday = scan.next();
-         paidYear = scan.next();
-         
          int resultID;
          int resultBirthday;
          int resultBirthMonth;
          int resultBirthYear;
          int resultPaidYear;
          int resultTime;
-         
+
+         line = input.nextLine();
+         scan = new Scanner(line);
+         scan.useDelimiter(",|" + System.lineSeparator());
+
+         id = scan.next();
+         name = scan.next();
+         birthYear = scan.next();
+         birthMonth = scan.next();
+         birthday = scan.next();
+         paidYear = scan.next();
+
          resultID = Integer.parseInt(id);      //konverterer String til int
          resultBirthday = Integer.parseInt(birthday);
          resultBirthMonth = Integer.parseInt(birthMonth)-1;
          resultBirthYear = Integer.parseInt(birthYear);
          resultPaidYear = Integer.parseInt(paidYear);
          
-         GregorianCalendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
+         Calendar birthDate = new GregorianCalendar(resultBirthYear, resultBirthMonth, resultBirthday);
          
          member = new Member(resultID, name, birthDate, resultPaidYear);
          
