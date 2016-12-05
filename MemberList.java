@@ -79,6 +79,11 @@ public class MemberList
             Result result = new Result(discipline, resultTime);
             
             member.results.add(result);
+            
+            if(Result.disciplines.contains(discipline) == false)
+            {
+               Result.disciplines.add(discipline);
+            }
              
          }
          
