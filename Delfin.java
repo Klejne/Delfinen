@@ -8,8 +8,8 @@ public class Delfin
        // Spørg efter username og password indtil login lykkes.
        // while (User.login() == false) { }
 
-      //Accountant.printMenu();
-      //Chairperson.printMenu();
+      Accountant.printMenu();
+      Chairperson.printMenu();
       Coach.printMenu();
    }
 }
