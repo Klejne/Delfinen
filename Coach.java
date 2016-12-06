@@ -4,6 +4,9 @@ import java.io.PrintStream;
 
 public class Coach extends User
 {
+   private static final int TOP_SWIMMER_COUNT = 5;
+
+
    public Coach(String login, String password)  //constructor
    {
       super(login, password);      
@@ -64,7 +67,7 @@ public class Coach extends User
          }
       }
       
-      for (int i = 1; i <= 5; i++)
+      for (int i = 1; i <= TOP_SWIMMER_COUNT; i++)
       {
          Member bestMember;
          
@@ -174,33 +177,25 @@ public class Coach extends User
          input.nextLine();    //HACK: slug linjeskift
          
          System.out.println(member.prettyPrint());
-         
          System.out.println("Disciplin?");
          
          String discipline;
-         
          discipline = input.nextLine();
          
          System.out.println(discipline);
-         
          System.out.println("Indtast tid i sekunder");
          
          String time;
-         
          time = input.nextLine();
-         
          time = time.replaceAll(",", ".");   //replaceAll-metoden ændrer komma til punktum
          
          double resultTime;
-         
          resultTime = Double.parseDouble(time);
           
          System.out.println(resultTime);
          
          Result result;
-         
          result = new Result(discipline.toUpperCase(), (int) (resultTime * 1000));
-         
          member.getResults().add(result);
          
          MemberList.writeToFile();
