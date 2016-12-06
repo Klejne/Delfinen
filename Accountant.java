@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 import java.io.PrintStream;
 
@@ -110,7 +111,9 @@ public class Accountant extends User
          
          if (input.nextInt() == 1)
          {
-            member.paidYear = 2016;
+            //får det nuværende år fra den specifikke kalender-instans
+            member.paidYear = Calendar.getInstance().get(Calendar.YEAR);
+            
             System.out.println(member);
             
             MemberList.writeToFile();

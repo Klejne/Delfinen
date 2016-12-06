@@ -162,6 +162,7 @@ public class MemberList
       // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
       for (Member member : MemberList.all)
       {
+         //får det nuværende år fra den specifikke kalender-instans
          if (member.paidYear < Calendar.getInstance().get(Calendar.YEAR))
          {
             debtors.add(member);
