@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Accountant extends User
@@ -6,7 +7,8 @@ public class Accountant extends User
    {
       super(login, password);      
    }
-   
+
+
    public static void printMenu()
    {
       int choice;
@@ -44,7 +46,7 @@ public class Accountant extends User
       //for hvert member af typen Member i ArrayListen MemberList.debtors 
       for (Member member : MemberList.debtors())
       {
-         System.out.printf("%4d | %-10s | %5d%s", member.id, member.name, member.paidYear, System.lineSeparator());
+         System.out.printf("%4d | %-10s | %5d%s", member.getId(), member.getName(), member.getPaidYear(), System.lineSeparator());
       }
       
       printMenu();
@@ -76,14 +78,15 @@ public class Accountant extends User
             return;
          }
          
-         System.out.println(member);
+         System.out.println(member.prettyPrint());
          System.out.println("[1] Har betalt i år");
          System.out.println("[0] Gå tilbage");
          
          if (input.nextInt() == 1)
          {
-            member.paidYear = 2016;
-            System.out.println(member);
+            // Finder det nuværende år, og bruger dét.
+            member.setPaidYear(Calendar.getInstance().get(Calendar.YEAR));
+            System.out.println(member.prettyPrint());
             
             MemberList.writeToFile();
          }

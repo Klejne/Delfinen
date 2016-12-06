@@ -6,7 +6,13 @@ import java.util.Calendar;
 
 public class MemberList
 {
-   public static ArrayList<Member> all = new ArrayList();
+   private static ArrayList<Member> all = new ArrayList();
+
+
+   public static ArrayList<Member> getAll()
+   {
+      return all;
+   }
 
 
    public static void addMember(int id, String name, Calendar birthday, int paidYear)
@@ -96,12 +102,12 @@ public class MemberList
 
             result = new Result(discipline, resultTime);
 
-            member.results.add(result);
+            member.getResults().add(result);
 
             // Vi tilføjer kun den disciplin vi lige har læst, hvis den ikke findes i listen allerede.
-            if (Result.disciplines.contains(discipline) == false)
+            if (Result.getDisciplines().contains(discipline) == false)
             {
-               Result.disciplines.add(discipline);
+               Result.getDisciplines().add(discipline);
             }
          }
 
@@ -115,7 +121,7 @@ public class MemberList
       // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
       for (Member member : MemberList.all)
       {
-         if (memberID == member.id)
+         if (memberID == member.getId())
          {
             return member;
          }
@@ -134,19 +140,18 @@ public class MemberList
       for (Member member : MemberList.all)
       {
          output.printf("%d,%s,%d,%d,%d,%d",
-            member.id,
-            member.name,
-            member.birthday.get(Calendar.YEAR),
-            member.birthday.get(Calendar.MONTH)+1,
-            member.birthday.get(Calendar.DAY_OF_MONTH),
-            member.paidYear
-
+            member.getId(),
+            member.getName(),
+            member.getBirthday().get(Calendar.YEAR),
+            member.getBirthday().get(Calendar.MONTH)+1,
+            member.getBirthday().get(Calendar.DAY_OF_MONTH),
+            member.getPaidYear()
          );
 
          // For hvert `result` af typen `Result` i `ArrayList`en `member.results`
-         for (Result result : member.results)
+         for (Result result : member.getResults())
          {
-            output.printf(",%s,%d", result.discipline, result.time);
+            output.printf(",%s,%d", result.getDiscipline(), result.getTime());
          }
 
          output.println();
@@ -162,7 +167,7 @@ public class MemberList
       // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
       for (Member member : MemberList.all)
       {
-         if (member.paidYear < Calendar.getInstance().get(Calendar.YEAR))
+         if (member.getPaidYear() < Calendar.getInstance().get(Calendar.YEAR))
          {
             debtors.add(member);
          }

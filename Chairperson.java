@@ -55,9 +55,9 @@ public class Chairperson extends User
    public static void printMembers()
    {
       
-      for (Member member : MemberList.all)
+      for (Member member : MemberList.getAll())
       {
-         System.out.println(member);
+         System.out.println(member.prettyPrint());
       }
       
       printMenu();
@@ -78,9 +78,9 @@ public class Chairperson extends User
       int paidYear = Calendar.getInstance().get(Calendar.YEAR);
       Member last;      //typen Member med navnet last (den sidste oprettet)
       
-      last = MemberList.all.get(MemberList.all.size() - 1);
+      last = MemberList.getAll().get(MemberList.getAll().size() - 1);
       
-      id = last.id + 1;
+      id = last.getId() + 1;
       
       System.out.println(id);
       
@@ -145,7 +145,7 @@ public class Chairperson extends User
             return;
          }
          
-         System.out.println(member);
+         System.out.println(member.prettyPrint());
          System.out.println("[1] Ret navn");
          System.out.println("[0] Gå tilbage");
          
@@ -176,8 +176,8 @@ public class Chairperson extends User
       
       if (input.hasNextLine())
       {
-         member.name = input.nextLine();
-         System.out.println(member);
+         member.setName(input.nextLine());
+         System.out.println(member.prettyPrint());
          
          MemberList.writeToFile();
       }
@@ -186,18 +186,14 @@ public class Chairperson extends User
    static void deleteMember(Scanner input)
    {
       int memberID;
-      
-      memberID = 0;
-      
+
       System.out.print("Tast medlemsnummer");
       
       if (input.hasNextInt())
       {  
-         int choice;
-         Member member = null;
+         Member member;
          memberID = input.nextInt();
          
-         choice = 0;
          member = MemberList.find(memberID);
          
          if (member == null)
@@ -206,21 +202,19 @@ public class Chairperson extends User
             return;
          }
          
-         System.out.println(member);
-         System.out.println("[1] Slet medlem" + member.name );
+         System.out.println(member.prettyPrint());
+         System.out.println("[1] Slet medlem" + member.getName());
          System.out.println("[0] Gå tilbage");
          
          System.out.print("Vaelg:");
       
          if (input.nextInt() == 1)
          {
-            MemberList.all.remove(member);
+            MemberList.getAll().remove(member);
             
             printMembers();
             MemberList.writeToFile();
          }
-         
-           
       }
  
       printMenu(); 

@@ -3,11 +3,12 @@ import java.util.Calendar;
 
 public class Member
 {
-   public int      id;
-   public String   name;
-   public Calendar birthday; // Vi kan bruge Calendar, da det er en superklasse af GregorianCalendar
-   public int      paidYear;
-   public ArrayList<Result> results = new ArrayList();
+   private int      id;
+   private String   name;
+   private Calendar birthday; // Vi kan bruge Calendar, da det er en superklasse af GregorianCalendar
+   private int      paidYear;
+
+   private ArrayList<Result> results = new ArrayList();
    
    
    public Member(int id, String name, Calendar birthday, int paidYear)  //constructor
@@ -17,22 +18,91 @@ public class Member
       this.birthday = birthday;
       this.paidYear = paidYear;
    }
+
+
+   public int getId()
+   {
+      return id;
+   }
+
+
+   public String getName()
+   {
+      return name;
+   }
+
+
+   public void setName(String name)
+   {
+      this.name = name;
+   }
+
+
+   public Calendar getBirthday()
+   {
+      return birthday;
+   }
+
+
+   public int getPaidYear()
+   {
+      return paidYear;
+   }
+
+
+   public void setPaidYear(int paidYear)
+   {
+      this.paidYear = paidYear;
+   }
+
+
+   public ArrayList<Result> getResults()
+   {
+      return results;
+   }
+
    
    /*
       Kaldes automatisk de steder hvor objektet konverteres til en streng, fx når det printes.
     */
    public String toString()
    {
+      String string ;
+      string = id + ",";
+      string = string + name + ",";
+      string = string + birthday.get(Calendar.DAY_OF_MONTH) + "/";
+      string = string + (birthday.get(Calendar.MONTH) + 1) + "/";
+      string = string + birthday.get(Calendar.YEAR) + ",";
+      string = string + paidYear;
+
+      // For hvert result af typen Result i ArrayListen results
+      for (Result result : results)
+      {
+         string = string + "," + result; // Vi udnytter toString() i Result-klassen her
+      }
+
+      return string;
+   }
+
+
+   public boolean equals(Object object)
+   {
+      return this == object;
+   }
+
+
+   public String prettyPrint()
+   {
       String string;
       string = String.format("%-4d %-15s %02d/%02d/%d %d",
-         id,
-         name,
-         birthday.get(Calendar.DAY_OF_MONTH),
-         birthday.get(Calendar.MONTH)+1,
-         birthday.get(Calendar.YEAR),
-         paidYear
+              id,
+              name,
+              birthday.get(Calendar.DAY_OF_MONTH),
+              birthday.get(Calendar.MONTH)+1,
+              birthday.get(Calendar.YEAR),
+              paidYear
       );
-      
+
       return string;
    }
    
@@ -47,9 +117,9 @@ public class Member
       {
          // Dette resultat tæller kun, hvis det er bedre end det hidtil bedste
          // OG (&&) er i den rigtige disciplin.
-         if (result.time < bestTime && result.discipline.equals(discipline))
+         if (result.getTime() < bestTime && result.getDiscipline().equals(discipline))
          {
-            bestTime = result.time;
+            bestTime = result.getTime();
          }
       }
       

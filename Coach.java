@@ -42,7 +42,7 @@ public class Coach extends User
    {
       
       //for hvert discipline af typen String i ArrayListen disciplines i klassen result 
-      for (String discipline : Result.disciplines)
+      for (String discipline : Result.getDisciplines())
       {
          ArrayList<Member> members;
          members = new ArrayList(); 
@@ -50,11 +50,11 @@ public class Coach extends User
          System.out.println(discipline);
          System.out.printf("%-2s | %-4s | %-10s | Toptid%s" ,"#", "ID", "Navn", System.lineSeparator());
          
-         for (Member member : MemberList.all)
+         for (Member member : MemberList.getAll())
          {
-            for (Result result : member.results)
+            for (Result result : member.getResults())
             {
-               if (result.discipline.equals(discipline))
+               if (result.getDiscipline().equals(discipline))
                {
                   if (members.contains(member) == false)
                   {
@@ -84,7 +84,7 @@ public class Coach extends User
             }
             
             members.remove(bestMember);
-            System.out.printf("%d. | %4d | %-10s | %4.2f s%s", i, bestMember.id, bestMember.name, bestMember.bestTime(discipline) / 1000.0, System.lineSeparator());
+            System.out.printf("%d. | %4d | %-10s | %4.2f s%s", i, bestMember.getId(), bestMember.getName(), bestMember.bestTime(discipline) / 1000.0, System.lineSeparator());
             
          }
          
@@ -120,7 +120,7 @@ public class Coach extends User
          
          input.nextLine();    //HACK: slug linjeskift
          
-         System.out.println(member);
+         System.out.println(member.prettyPrint());
          
          System.out.println("Disciplin?");
          
@@ -148,7 +148,7 @@ public class Coach extends User
          
          result = new Result(discipline.toUpperCase(), (int) (resultTime * 1000));
          
-         member.results.add(result);
+         member.getResults().add(result);
          
          MemberList.writeToFile();
          

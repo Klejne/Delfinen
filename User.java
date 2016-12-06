@@ -14,6 +14,19 @@ public class User
       this.login = login;
       this.password = password;      
    }
+
+
+   public String toString()
+   {
+      return login + ":" + password;
+   }
+
+
+   public boolean equals(Object object)
+   {
+      return this == object;
+   }
+
    
    public static boolean login()
    {
@@ -52,9 +65,6 @@ public class User
       
    public static void populate()
    {
-   
-      
-   
       User ole = new User("Ole Bole", "Bole Ole");
       User hans = new User("Hans P", "hej123");
       User karen = new User("Karen G", "password");
@@ -62,7 +72,5 @@ public class User
       all.add(ole);
       all.add(hans);
       all.add(karen);
-      
-   }  
-   
+   }
 }
