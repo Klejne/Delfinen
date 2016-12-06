@@ -29,7 +29,7 @@ public class Coach extends User
       }      
    }
    
-   public static void switchMenu(Scanner input, int choice)
+   private static void switchMenu(Scanner input, int choice)
    {
       switch (choice)
       {
@@ -42,7 +42,7 @@ public class Coach extends User
    }
    
    
-   public static ArrayList<Member> getTopSwimmers(String discipline)
+   private static ArrayList<Member> getTopSwimmers(String discipline)
    {
       ArrayList<Member> members;
       ArrayList<Member> topSwimmers;
@@ -91,7 +91,7 @@ public class Coach extends User
    }
    
    
-   public static void printResults()
+   private static void printResults()
    {
       //for hvert discipline af typen String i ArrayListen disciplines i klassen result 
       for (String discipline : Result.getDisciplines())
@@ -117,7 +117,7 @@ public class Coach extends User
       printMenu();
    }
    
-   public static void resultsToFile()
+   private static void resultsToFile()
    {
       PrintStream output;
       
@@ -147,7 +147,7 @@ public class Coach extends User
    }
    
    
-   public static void addResult(Scanner input)
+   private static void addResult(Scanner input)
    {
       int memberID;
       

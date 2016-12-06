@@ -32,7 +32,7 @@ public class Accountant extends User
       }      
    }
    
-   public static void switchMenu(Scanner input, int choice)
+   private static void switchMenu(Scanner input, int choice)
    {
       switch (choice)
       {
@@ -44,7 +44,7 @@ public class Accountant extends User
       }     
    }
    
-   public static void printDebtors()
+   private static void printDebtors()
    {
       System.out.printf("%4s | %-10s | Sidst Betalt%s" , "ID", "Navn", System.lineSeparator());
       
@@ -58,7 +58,7 @@ public class Accountant extends User
    }
    
    
-   public static void debtorsToFile()
+   private static void debtorsToFile()
    {  
       PrintStream output;
       ArrayList<Member> debtorsPrint;
@@ -80,19 +80,15 @@ public class Accountant extends User
    }
    
    
-   public static void updatePayment(Scanner input)
+   private static void updatePayment(Scanner input)
    {
       int memberID;
       
-      memberID = 0;
-      
       System.out.print("Tast medlemsnummer");
-      
-      
-      
+
       if (input.hasNextInt())
       {
-         Member member = null;
+         Member member;
          memberID = input.nextInt();
          
          

@@ -32,7 +32,7 @@ public class Chairperson extends User
       }      
    }
    
-   public static void switchMenu(Scanner input, int choice)
+   private static void switchMenu(Scanner input, int choice)
    {
       switch (choice)
       {
@@ -52,7 +52,7 @@ public class Chairperson extends User
       
    }
    
-   public static void printMembers()
+   private static void printMembers()
    {
       
       for (Member member : MemberList.getAll())
@@ -63,13 +63,13 @@ public class Chairperson extends User
       printMenu();
    }
    
-   public static void createMember()
+   private static void createMember()
    {
       Scanner scanner;
       
       scanner = new Scanner(System.in);
       
-      int id = 0;
+      int id;
       
       String name;
       int birthday;
@@ -121,18 +121,16 @@ public class Chairperson extends User
   
    }
    
-   public static void editMember(Scanner input)
+   private static void editMember(Scanner input)
    {
       int memberID;
-      
-      memberID = 0;
       
       System.out.print("Tast medlemsnummer");
       
       if (input.hasNextInt())
       {  
          int choice;
-         Member member = null;
+         Member member;
          memberID = input.nextInt();
          
          choice = 0;
@@ -167,7 +165,7 @@ public class Chairperson extends User
       }         
    }
    
-   public static void editName(Scanner input, Member member)
+   private static void editName(Scanner input, Member member)
    {
       
       System.out.println("Indtast nyt navn");
@@ -183,7 +181,7 @@ public class Chairperson extends User
       }
    }
    
-   static void deleteMember(Scanner input)
+   private static void deleteMember(Scanner input)
    {
       int memberID;
 
