@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
+import java.io.PrintStream;
+
 
 public class Accountant extends User
 {
@@ -16,7 +19,8 @@ public class Accountant extends User
     
       System.out.println("Kasserer for Delfinen");
       System.out.println("[1] Se medlemmer i restance");
-      System.out.println("[2] Opdater Medlemsbetaling");
+      System.out.println("[2] Udskriv medlemmer i restance til fil");
+      System.out.println("[3] Opdater Medlemsbetaling");
       System.out.println("[0] Luk");
       
       System.out.print("Vaelg:");
@@ -33,8 +37,9 @@ public class Accountant extends User
       switch (choice)
       {
          case 0: System.out.println("Farvel"); break;
-         case 1: printDebtors(); break;    
-         case 2: updatePayment(input); break;
+         case 1: printDebtors(); break;  
+         case 2: debtorsToFile(); break;  
+         case 3: updatePayment(input); break;
          default: System.out.println("Prøv igen"); printMenu();       
       }     
    }
@@ -51,6 +56,29 @@ public class Accountant extends User
       
       printMenu();
    }
+   
+   
+   public static void debtorsToFile()
+   {  
+      PrintStream output;
+      ArrayList<Member> debtorsPrint;
+      
+      output = FileManager.write("debt.csv"); 
+      debtorsPrint = MemberList.debtors();
+      
+      for (Member debtor : debtorsPrint)  //for each
+      {
+         output.printf("%d,%s,%d",
+            debtor.getId(),
+            debtor.getName(),
+            debtor.getPaidYear()
+         );
+
+         output.println();
+      }
+      printMenu(); 
+   }
+   
    
    public static void updatePayment(Scanner input)
    {
@@ -87,7 +115,7 @@ public class Accountant extends User
             // Finder det nuværende år, og bruger dét.
             member.setPaidYear(Calendar.getInstance().get(Calendar.YEAR));
             System.out.println(member.prettyPrint());
-            
+
             MemberList.writeToFile();
          }
          printMenu();         

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.PrintStream;
 
 public class Coach extends User
 {
@@ -15,7 +16,8 @@ public class Coach extends User
     
       System.out.println("Træner for Delfinen");
       System.out.println("[1] Se top 5 resultater for hver disciplin");
-      System.out.println("[2] Tilføj resultat");
+      System.out.println("[2] Udskriv top 5 resultater for hver disciplin til fil");
+      System.out.println("[3] Tilføj resultat");
       System.out.println("[0] Luk");
       
       System.out.print("Vaelg:");
@@ -32,60 +34,81 @@ public class Coach extends User
       switch (choice)
       {
          case 0: System.out.println("Farvel"); break;
-         case 1: printResults(); break;    
-         case 2: addResult(input); break;
+         case 1: printResults(); break;
+         case 2: resultsToFile(); break;       
+         case 3: addResult(input); break;
          default: System.out.println("Prøv igen"); printMenu();       
       }     
    }
    
+   
+   public static ArrayList<Member> getTopSwimmers(String discipline)
+   {
+      ArrayList<Member> members;
+      ArrayList<Member> topSwimmers;
+      
+      members = new ArrayList();
+      topSwimmers = new ArrayList(); 
+      
+      for (Member member : MemberList.getAll())
+      {
+         for (Result result : member.getResults())
+         {
+            if (result.getDiscipline().equals(discipline))
+            {
+               if (members.contains(member) == false)
+               {
+                  members.add(member);
+               }
+            }
+         }
+      }
+      
+      for (int i = 1; i <= 5; i++)
+      {
+         Member bestMember;
+         
+         if (members.size() == 0)
+         {
+            break;
+         }
+   
+         bestMember = members.get(0);
+         
+         for (Member member : members)
+         {
+            if (bestMember.bestTime(discipline) > member.bestTime(discipline))
+            {
+               bestMember = member;               
+            }
+         }
+         
+         topSwimmers.add(bestMember);
+         members.remove(bestMember);
+      }
+         
+      return topSwimmers;
+   }
+   
+   
    public static void printResults()
    {
-      
       //for hvert discipline af typen String i ArrayListen disciplines i klassen result 
       for (String discipline : Result.getDisciplines())
       {
+         int position;
          ArrayList<Member> members;
-         members = new ArrayList(); 
+         members = getTopSwimmers(discipline); 
          
          System.out.println(discipline);
          System.out.printf("%-2s | %-4s | %-10s | Toptid%s" ,"#", "ID", "Navn", System.lineSeparator());
          
-         for (Member member : MemberList.getAll())
-         {
-            for (Result result : member.getResults())
-            {
-               if (result.getDiscipline().equals(discipline))
-               {
-                  if (members.contains(member) == false)
-                  {
-                     members.add(member);
-                  }
-               }
-            }
-         }
+         position = 1;
          
-         for (int i = 1; i <= 5; i++)
-         {
-            Member bestMember;
-            
-            if (members.size() == 0)
-            {
-               break;
-            }
-      
-            bestMember = members.get(0);
-            
-            for (Member member : members)
-            {
-               if (bestMember.bestTime(discipline) > member.bestTime(discipline))
-               {
-                  bestMember = member;               
-               }
-            }
-            
-            members.remove(bestMember);
-            System.out.printf("%d. | %4d | %-10s | %4.2f s%s", i, bestMember.getId(), bestMember.getName(), bestMember.bestTime(discipline) / 1000.0, System.lineSeparator());
-            
+         for (Member bestMember : members)
+         {  
+            System.out.printf("%d. | %4d | %-10s | %4.2f s%s", position, bestMember.getId(), bestMember.getName(), bestMember.bestTime(discipline) / 1000.0, System.lineSeparator());
+            position++;
          }
          
          System.out.println();
@@ -93,6 +116,36 @@ public class Coach extends User
       
       printMenu();
    }
+   
+   public static void resultsToFile()
+   {
+      PrintStream output;
+      
+      output = FileManager.write("top.txt"); 
+      
+      for (String discipline : Result.getDisciplines())
+      {
+         int position;
+         ArrayList<Member> members;
+         members = getTopSwimmers(discipline); 
+         
+         output.println(discipline);
+         output.printf("%-2s | %-4s | %-10s | Toptid%s" ,"#", "ID", "Navn", System.lineSeparator());
+         
+         position = 1;
+         
+         for (Member bestMember : members)
+         {  
+            output.printf("%d. | %4d | %-10s | %4.2f s%s", position, bestMember.getId(), bestMember.getName(), bestMember.bestTime(discipline) / 1000.0, System.lineSeparator());
+            position++;
+         }
+         
+         output.println();
+      }
+      
+      printMenu();
+   }
+   
    
    public static void addResult(Scanner input)
    {
