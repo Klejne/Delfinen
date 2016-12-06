@@ -9,7 +9,7 @@ public class MemberList
    public static ArrayList<Member> all = new ArrayList();
 
 
-   public static void addMember(int id, String name, GregorianCalendar birthday, int paidYear)
+   public static void addMember(int id, String name, Calendar birthday, int paidYear)
    {
       Member member;
       member = new Member(id, name, birthday, paidYear);
