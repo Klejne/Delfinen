@@ -9,7 +9,7 @@ public class Delfin
       // while (User.login() == false) { }
 
       Accountant.printMenu();
-      Chairperson.printMenu();
-      Coach.printMenu();
+      //Chairperson.printMenu();
+      //Coach.printMenu();
    }
 }
