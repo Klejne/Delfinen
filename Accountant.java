@@ -17,7 +17,7 @@ public class Accountant extends User
     
       System.out.println("Kasserer for Delfinen");
       System.out.println("[1] Se medlemmer i restance");
-      System.out.println("[2] Udskriv skyldnere til fil");
+      System.out.println("[2] Udskriv medlemmer i restance til fil");
       System.out.println("[3] Opdater Medlemsbetaling");
       System.out.println("[0] Luk");
       
