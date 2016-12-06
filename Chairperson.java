@@ -6,11 +6,14 @@ import java.util.Calendar;
 
 public class Chairperson extends User
 {
+   /* Tina, Peter, Karo, Emma */
    public Chairperson(String login, String password)  //constructor
    {
       super(login, password);      
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    public static void printMenu()
    {
       int choice;
@@ -31,7 +34,9 @@ public class Chairperson extends User
          switchMenu(input, choice);
       }      
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void switchMenu(Scanner input, int choice)
    {
       switch (choice)
@@ -51,10 +56,11 @@ public class Chairperson extends User
       }
       
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void printMembers()
    {
-      
       for (Member member : MemberList.getAll())
       {
          System.out.println(member.prettyPrint());
@@ -62,7 +68,9 @@ public class Chairperson extends User
       
       printMenu();
    }
-   
+
+
+   /* Tina, Peter, Emma */
    private static void createMember()
    {
       Scanner scanner;
@@ -100,7 +108,6 @@ public class Chairperson extends User
          birthday = scanner.nextInt();
          birthMonth = scanner.nextInt();
          birthYear = scanner.nextInt();
-         
       }
       else 
       {
@@ -120,7 +127,9 @@ public class Chairperson extends User
       
   
    }
-   
+
+
+   /* Tina, Peter, Emma */
    private static void editMember(Scanner input)
    {
       int memberID;
@@ -164,14 +173,16 @@ public class Chairperson extends User
          printMenu();
       }         
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void editName(Scanner input, Member member)
    {
       
       System.out.println("Indtast nyt navn");
       
       input.nextLine();    //HACK:sluger linjeskift for meget fra nextInt i editMember()
-      
+
       if (input.hasNextLine())
       {
          member.setName(input.nextLine());
@@ -180,7 +191,9 @@ public class Chairperson extends User
          MemberList.writeToFile();
       }
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void deleteMember(Scanner input)
    {
       int memberID;

@@ -7,8 +7,9 @@ public class User
    private String password;
    
    private static ArrayList<User> all = new ArrayList();
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    public User(String login, String password)  //constructor
    {
       this.login = login;
@@ -16,6 +17,7 @@ public class User
    }
 
 
+   /* Karo, Emma */
    public String toString()
    {
       return login + ":" + password;
@@ -34,7 +36,8 @@ public class User
       }
    }
 
-   
+
+   /* Tina, Peter, Emma */
    public static boolean login()
    {
       Scanner loginScanner = new Scanner(System.in);
@@ -68,7 +71,9 @@ public class User
 
       return success;
    }
-      
+
+
+   /* Tina, Peter, Karo, Emma */
    public static void populate()
    {
       User admin;

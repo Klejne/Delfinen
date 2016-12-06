@@ -9,12 +9,14 @@ public class MemberList
    private static ArrayList<Member> all = new ArrayList();
 
 
+   /* Tina, Peter, Karo, Emma */
    public static ArrayList<Member> getAll()
    {
       return all;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static void addMember(int id, String name, Calendar birthday, int paidYear)
    {
       Member member;
@@ -24,6 +26,7 @@ public class MemberList
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static void readFromFile()
    {
       Scanner input;
@@ -116,6 +119,7 @@ public class MemberList
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static Member find(int memberID)
    {
       // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
@@ -131,6 +135,7 @@ public class MemberList
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static void writeToFile()
    {
       PrintStream output;
@@ -159,6 +164,7 @@ public class MemberList
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static ArrayList<Member> debtors()
    {
       ArrayList<Member> debtors;

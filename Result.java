@@ -8,6 +8,7 @@ public class Result
    private static ArrayList<String> disciplines = new ArrayList();
 
 
+   /* Tina, Peter, Karo, Emma */
    public Result(String discipline, int time)  //constructor
    {
       this.discipline = discipline;
@@ -21,18 +22,21 @@ public class Result
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public int getTime()
    {
       return time;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static ArrayList<String> getDisciplines()
    {
       return disciplines;
    }
 
 
+   /* Karo, Emma */
    public String toString()
    {
       String string;

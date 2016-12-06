@@ -1,5 +1,6 @@
 public class Delfin
 {
+   /* Tina, Peter, Karo, Emma */
    public static void main(String[] args)
    {
       MemberList.readFromFile();

@@ -7,11 +7,14 @@ public class Coach extends User
    private static final int TOP_SWIMMER_COUNT = 5;
 
 
+   /* Tina, Peter, Karo, Emma */
    public Coach(String login, String password)  //constructor
    {
       super(login, password);      
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    public static void printMenu()
    {
       int choice;
@@ -31,7 +34,9 @@ public class Coach extends User
          switchMenu(input, choice);
       }      
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void switchMenu(Scanner input, int choice)
    {
       switch (choice)
@@ -43,8 +48,9 @@ public class Coach extends User
          default: System.out.println("Prøv igen"); printMenu();       
       }     
    }
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static ArrayList<Member> getTopSwimmers(String discipline)
    {
       ArrayList<Member> members;
@@ -92,8 +98,9 @@ public class Coach extends User
          
       return topSwimmers;
    }
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void printResults()
    {
       //for hvert discipline af typen String i ArrayListen disciplines i klassen result 
@@ -119,7 +126,9 @@ public class Coach extends User
       
       printMenu();
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void resultsToFile()
    {
       PrintStream output;
@@ -148,25 +157,22 @@ public class Coach extends User
       
       printMenu();
    }
-   
-   
+
+
+   /* Tina, Peter, Emma */
    private static void addResult(Scanner input)
    {
       int memberID;
-      
-      memberID = 0;
       
       System.out.print("Tast medlemsnummer");
       
       if (input.hasNextInt())
       {
-         Member member = null;
+         Member member;
          memberID = input.nextInt();
-         
          
          member = MemberList.find(memberID);
          
-                  
          if (member == null)
          {
             System.out.print("Kunne ikke finde medlem - prøv igen");
@@ -203,7 +209,4 @@ public class Coach extends User
          printMenu();         
       }  
    }
-   
-   
-   
 }

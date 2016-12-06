@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class FileManager
 {
+   /* Peter, Emma */
    public static PrintStream write(String filename)
    {
       File file;
@@ -22,6 +23,7 @@ public class FileManager
    }
 
 
+   /* Peter, Emma */
    public static Scanner read(String filename)
    {
       File file;

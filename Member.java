@@ -9,8 +9,9 @@ public class Member
    private int      paidYear;
 
    private ArrayList<Result> results = new ArrayList();
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    public Member(int id, String name, Calendar birthday, int paidYear)  //constructor
    {
       this.id       = id;
@@ -20,51 +21,59 @@ public class Member
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public int getId()
    {
       return id;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public String getName()
    {
       return name;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public void setName(String name)
    {
       this.name = name;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public Calendar getBirthday()
    {
       return birthday;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public int getPaidYear()
    {
       return paidYear;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public void setPaidYear(int paidYear)
    {
       this.paidYear = paidYear;
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public ArrayList<Result> getResults()
    {
       return results;
    }
 
-   
+
    /*
       Kaldes automatisk de steder hvor objektet konverteres til en streng, fx når det printes.
     */
+   /* Karo, Emma */
    public String toString()
    {
       String string ;
@@ -97,7 +106,7 @@ public class Member
       }
    }
 
-
+   /* Tina, Peter, Karo, Emma */
    public String prettyPrint()
    {
       String string;
@@ -112,8 +121,9 @@ public class Member
 
       return string;
    }
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    public int bestTime(String discipline)
    {
       int bestTime;

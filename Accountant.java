@@ -6,12 +6,14 @@ import java.io.PrintStream;
 
 public class Accountant extends User
 {
+   /* Tina, Peter, Karo, Emma */
    public Accountant(String login, String password)  //constructor
    {
       super(login, password);      
    }
 
 
+   /* Tina, Peter, Karo, Emma */
    public static void printMenu()
    {
       int choice;
@@ -31,7 +33,9 @@ public class Accountant extends User
          switchMenu(input, choice);
       }      
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void switchMenu(Scanner input, int choice)
    {
       switch (choice)
@@ -43,7 +47,9 @@ public class Accountant extends User
          default: System.out.println("Prøv igen"); printMenu();       
       }     
    }
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void printDebtors()
    {
       System.out.printf("%4s | %-10s | Sidst Betalt%s" , "ID", "Navn", System.lineSeparator());
@@ -56,8 +62,9 @@ public class Accountant extends User
       
       printMenu();
    }
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void debtorsToFile()
    {  
       PrintStream output;
@@ -78,8 +85,9 @@ public class Accountant extends User
       }
       printMenu(); 
    }
-   
-   
+
+
+   /* Tina, Peter, Karo, Emma */
    private static void updatePayment(Scanner input)
    {
       int memberID;
@@ -91,10 +99,8 @@ public class Accountant extends User
          Member member;
          memberID = input.nextInt();
          
-         
          member = MemberList.find(memberID);
          
-                  
          if (member == null)
          {
             System.out.print("Kunne ikke finde medlem - prøv igen");
