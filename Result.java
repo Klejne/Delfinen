@@ -42,8 +42,15 @@ public class Result
    }
 
 
-   public boolean equals(Object result)
+   public boolean equals(Object other)
    {
-       return this == result;
+      if (this == other)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
    }
 }

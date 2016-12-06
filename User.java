@@ -22,9 +22,16 @@ public class User
    }
 
 
-   public boolean equals(Object object)
+   public boolean equals(Object other)
    {
-      return this == object;
+      if (this == other)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
    }
 
    
