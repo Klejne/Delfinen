@@ -1,17 +1,16 @@
 public class Delfin
-{  
+{
+   /* Tina, Peter, Karo, Emma */
    public static void main(String[] args)
    {
-      Member.populate();
-      //Member.debtors();
-      Member.debtorsToFile();
+      MemberList.readFromFile();
       User.populate();
-      
-      // while (User.login() == false) // Den bliver kørt igen, hvis login eller password er forkert.
-      {
-      
-      }  
-      
 
+      // SpÃ¸rg efter username og password indtil login lykkes.
+      while (User.login() == false) { }
+
+      Accountant.printMenu();
+      Chairperson.printMenu();
+      Coach.printMenu();
    }
 }

@@ -1,6 +1,9 @@
 *.class
 *.gpj
 *.txt
+*.idea
+*.iml
+out/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -63,3 +66,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.txt
+*.zip
