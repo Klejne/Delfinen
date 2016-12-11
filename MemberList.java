@@ -122,7 +122,7 @@ public class MemberList
    /* Tina, Peter, Karo, Emma */
    public static Member find(int memberID)
    {
-      // For hvert `member` af typen `Member` i `ArrayList`en `MemberList.all`
+      // For hvert `Member` med variabelnavnet `member` i `ArrayList`en `MemberList.all`
       for (Member member : MemberList.all)
       {
          if (memberID == member.getId())
